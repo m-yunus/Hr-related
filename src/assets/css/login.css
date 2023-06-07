@@ -1,0 +1,127 @@
+   * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    .login-container {
+      display: flex;
+      height: 100vh;
+    }
+    
+    .left-section {
+      flex: 1;
+      background-color: #033772;
+      
+      color: white;
+    }
+    
+    .left-section p {
+      text-align: center;
+      max-width: 80%;
+    }
+    
+    .right-section {
+        flex: 1;
+    background-color: white;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    }
+    
+    .login-form {
+      /* width: 80%;
+      max-width: 400px; */
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .login-form input[type="text"],
+    .login-form input[type="password"],   .login-form input[type="email"]{
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #dae9f7;
+    }
+    .right-section .footer{
+        padding: 30px;
+    }
+    .login-form button {
+      width: 100%;
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #033772;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+    .left-section .logo{
+        min-height: 70px;
+        padding: 30px 50px;
+    }
+    .left-section .quotes{
+        display: flex;
+        height: 65%;
+        width: 100%;
+        padding: 50px;
+        align-items: center;
+    }
+    .login-section {
+        position: absolute;
+        max-width: 400px;
+        min-width: 300px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .forgot-register-section p{
+        text-align: center;
+        padding-top: 15px;
+        font-size: 15px;
+        font-weight: 400;
+      }
+      .forgot-register-section p a{
+        color: grey;
+        text-decoration: none;
+      }
+      .input-container {
+        position: relative;
+      }
+      
+      .input-container input {
+        width: 100%;
+        padding: 10px 40px 10px 10px; /* Adjust the right padding to accommodate the icon */
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+      
+      .input-container .icon {
+        position: absolute;
+        top: 50%;
+        right: 10px; /* Adjust the position as per your requirements */
+        transform: translateY(-50%);
+       
+       
+      }
+      
+    
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      
+      .left-section,
+      .right-section {
+        
+        height: auto;
+      }
+    }
