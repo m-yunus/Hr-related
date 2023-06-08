@@ -19,7 +19,7 @@ const LoginForm = () => {
               <FaEye />
             </span>
           </div>
-         <Link to="/Personalize"><button>Login</button> </Link> 
+         <Link to="/personalize"><button>Login</button> </Link> 
           <div className="forgot-register-section">
             <p>
               <a href="">Forgot Password?</a>

@@ -1,45 +1,106 @@
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #1877d2;
-    padding: 10px;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1877d2;
+  padding: 10px;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 50px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-user {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-icon {
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.username {
+  margin-right: 10px;
+  color: white;
+}
+
+.sidebar {
+  width: 20%;
+  background-color: #ffffff;
+  padding: 10px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.search-input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  padding: 5px;
+}
+
+.search-icon {
+  color: #aaa;
+  margin-right: 5px;
+}
+
+.links a {
+  display: block;
+  padding: 8px 0;
+  text-decoration: none;
+  color: #333;
+}
+
+.links a:hover {
+  background-color: #f2f2f2;
+}
+
+.links {
+  height: 330px;
+  overflow-y: auto;
+}
+
+.links::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f2f2f2;
+}
+
+.links::-webkit-scrollbar-thumb {
+  background-color: #2074d4;
+  border-radius: 4px;
+}
+
+.links::-webkit-scrollbar-thumb:hover {
+  background-color: #2074d4;
+}
+
+.sidebar-container {
   
-  .navbar-left {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    
-    height: 50px;
-  
-  }
-  
-  .navbar-right {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar-user {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar-icon {
-    margin-right: 5px;
-    font-size: 20px;
-  }
-  
-  .profile-picture {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 5px;
-  }
-  
-  .username {
-    margin-right: 10px;
-    color: white;
-  }
+  padding: 10px;
+  box-shadow: rgb(0 0 0 / 20%) 0px 5px 15px;
+}
