@@ -13,6 +13,7 @@ import Exclusion_Criteria from "./routes/Exclusion_Criteria";
 import SuperVisor_page from "./routes/SuperVisor_page";
 import HR_Review_Settings from "./routes/HR_Review_Settings";
 import History_Data from "./routes/History_Data";
+import Total_Rewards_Statement from "./routes/Total_Rewards_Statement";
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
             <Route path="SuperVisor-Page" element={<SuperVisor_page/>} />
             <Route path="HR-Review-Settings" element={<HR_Review_Settings/>} />
             <Route path="History-Data" element={<History_Data/>} />
-            <Route path="HR-Review-Settings" element={<Company_Profile/>} />
+            <Route path="Total-Rewards-Statement" element={<Total_Rewards_Statement/>} />
             <Route path="HR-Review-Settings" element={<Company_Profile/>} />
             <Route path="HR-Review-Settings" element={<Company_Profile/>} />
 
