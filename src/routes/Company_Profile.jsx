@@ -10,7 +10,20 @@ const Company_Profile = () => {
   }
   return (
    <>
-   
+     <div className="wrapper-right">
+      <form action="">
+      <div className="dash-right-top">
+      
+      <div className="pathname">
+        <h3>
+          <span style={{ color: "skyblue" }}>Personalize</span>{" "}
+          <span>/ Company Profile</span>
+        </h3>
+      </div>
+      <input type="submit" className="update-button" value="Update"/>
+    
+    </div>
+      <div className="content-container">
    <div className="heading-container">
         <h4>Company Profile</h4>
         <div className="underline-grey"></div>
@@ -51,7 +64,7 @@ const Company_Profile = () => {
         <div className="underline-grey"></div>
       </div>
 
-      <ul className="Culture-inputbox-list">
+      <ul className=" company-profile-list">
         <li>
           <input type="text" placeholder="Select Percentage " />
         </li>
@@ -122,8 +135,9 @@ const Company_Profile = () => {
       
       </li>
       </ul>
-    
-   
+      </div>
+   </form>
+   </div>
    
    </>
   )

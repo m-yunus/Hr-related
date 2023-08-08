@@ -22,7 +22,7 @@
     
     .left-section p {
       text-align: center;
-      max-width: 80%;
+      /* max-width: 80%; */
     }
     
     .right-section {
@@ -118,10 +118,18 @@
       .container {
         flex-direction: column;
       }
-      
+      .login-container{
+        flex-direction: column;
+      }
       .left-section,
       .right-section {
         
         height: auto;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .left-section .quotes {
+        height: 15%;
       }
     }

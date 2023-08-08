@@ -3,6 +3,24 @@
 const HR_Review_Settings = () => {
   return (
     <>
+     <div className="wrapper-right">
+      <form action="">
+      <div className="dash-right-top">
+      
+      <div className="pathname">
+        <h3>
+          <span style={{ color: "skyblue" }}>Personalize</span>{" "}
+          <span>/ HR Review Settings</span>
+        </h3>
+      </div>
+      <input type="submit" className="update-button" value="Update"/>
+    
+    </div>
+      <div className="content-container">
+    <div className="heading-container">
+        <h4>Hr Review settings</h4>
+        <div className="underline-grey"></div>
+      </div>
      <ul className="Salary-inputbox-list salary-list">
         <li>
           <div className="radio-input-container">
@@ -75,6 +93,9 @@ const HR_Review_Settings = () => {
 
         
       </ul>
+      </div>
+      </form>
+      </div>
     </>
   )
 }

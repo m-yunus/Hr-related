@@ -9,11 +9,25 @@ const SuperVisor_page = () => {
   }
   return (
     <>
+    <div className="wrapper-right">
+      <form action="">
+      <div className="dash-right-top">
+      
+      <div className="pathname">
+        <h3>
+          <span style={{ color: "skyblue" }}>Personalize</span>{" "}
+          <span>/ Supervisor Page</span>
+        </h3>
+      </div>
+      <input type="submit" className="update-button" value="Update"/>
+    
+    </div>
+      <div className="content-container">
     <div className="heading-container">
         <h4>Supervisor Landing Page</h4>
         <div className="underline-grey"></div>
       </div>
-      <ul className="Culture-inputbox-list">
+      <ul className="supervisor-inputbox-list">
      
         <li>  <div className="file-input-container">
           <label htmlFor="">Load Policy</label>
@@ -144,6 +158,9 @@ const SuperVisor_page = () => {
 
        
       </ul>
+      </div>
+      </form>
+      </div>
     </>
   )
 }

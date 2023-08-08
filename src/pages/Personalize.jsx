@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../layout/Navbar";
 import Sidebar from "../layout/Sidebar";
-import Dash_Right_Top from "../components/Dash_Right_Top";
+
 
 const Personalize = () => {
   return (
@@ -12,10 +12,10 @@ const Personalize = () => {
         <Sidebar />
       </div>
       <div className="content">
-        <Dash_Right_Top/>
-        <div className="content-container">
+       
+       
         <Outlet />
-        </div>
+       
        
       </div>
     </div>
