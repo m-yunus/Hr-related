@@ -1,5 +1,5 @@
+import RouteLayout from "./layout/RouteLayout/RouteLayout";
 
-import RouteLayout from "./assets/RouteLayout/RouteLayout";
 
 function App() {
   return (

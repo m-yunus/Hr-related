@@ -23,8 +23,10 @@ const Sidebar = () => {
           <Link to="/personalize/HR-Review-Settings">HR Review Settings</Link>
           <Link to="/personalize/History-Data">History Data</Link>
           <Link to="/personalize/Total-Rewards-Statement">Total Rewards Statement</Link>
-          <Link to="/personalize/link10">Turn Around Time</Link>
-          <Link to="/personalize/link10">Performance based bonus</Link>
+          <Link to="/personalize/TurnAroundtime">Turn Around Time</Link>
+          <Link to="/personalize/Performance_based_bonus">Performance based bonus</Link>
+          <Link to="/personalize/Terminology">Terminology</Link>
+          <Link to="/personalize/Additional_Matrix">Additional Matrix</Link>
         </div>
       </div>
       </>

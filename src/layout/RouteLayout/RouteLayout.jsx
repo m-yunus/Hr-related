@@ -13,7 +13,10 @@ import HR_Review_Settings from "../../routes/HR_Review_Settings"
 import History_Data from "../../routes/History_Data"
 import Total_Rewards_Statement from "../../routes/Total_Rewards_Statement"
 import ExclusionCriteria from "../../routes/Exclusion_Criteria"
-
+import Turn_Around_time from "../../routes/TurnAroundTime/Turn_Around_time"
+import Performance_based_bonus from "../../routes/Performance_based_bonus/Performance_based_bonus"
+import Terminology from "../../routes/Terminology/Terminology"
+import Addition_matrix from "../../routes/Additional Matrix/Addition_matrix"
 const RouteLayout = () => {
   return (
     <>
@@ -35,8 +38,10 @@ const RouteLayout = () => {
             <Route path="HR-Review-Settings" element={<HR_Review_Settings/>} />
             <Route path="History-Data" element={<History_Data/>} />
             <Route path="Total-Rewards-Statement" element={<Total_Rewards_Statement/>} />
-            <Route path="HR-Review-Settings" element={<Company_Profile/>} />
-            <Route path="HR-Review-Settings" element={<Company_Profile/>} />
+            <Route path="TurnAroundtime" element={<Turn_Around_time/> } />
+            <Route path="Performance_based_bonus" element={<Performance_based_bonus/>} />
+            <Route path="Terminology" element={<Terminology/>} />
+            <Route path="Additional_Matrix" element={<Addition_matrix/>} />
 
           </Route>
         </Routes>

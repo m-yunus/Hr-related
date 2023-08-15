@@ -1,0 +1,25 @@
+.Culture-inputbox-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 1000px; /* Adjust the maximum width as needed */
+    margin: 0 auto;
+  }
+  
+  .Culture-inputbox-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .Culture-inputbox-list li {
+    width: calc(15.33% - 25px); /* Adjust the width and spacing as needed */
+    margin-bottom: 20px;
+  }
+  
+  .Culture-inputbox-list label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  

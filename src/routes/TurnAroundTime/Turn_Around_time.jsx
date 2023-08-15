@@ -1,8 +1,10 @@
 
 
-const Total_Rewards_Statement = () => {
-  return (<>
-   <div className="wrapper-right">
+const Turn_Around_time = () => {
+  return (
+ <>
+ 
+ <div className="wrapper-right">
       <form action="">
      
         <div className="dash-right-top">
@@ -10,7 +12,7 @@ const Total_Rewards_Statement = () => {
           <div className="pathname">
             <h3>
               <span style={{ color: "skyblue" }}>Personalize</span>{" "}
-              <span>/ Total Rewards Statement</span>
+              <span>/ Turn Around Time</span>
             </h3>
           </div>
           <input type="submit" className="update-button" value="Update"/>
@@ -18,25 +20,24 @@ const Total_Rewards_Statement = () => {
         </div>
         <div className="content-container">
     <div className="heading-container">
-        <h4>Total Cash</h4>
+        <h4>Turn Around Time</h4>
         <div className="underline-grey"></div>
       </div>
 
       <ul className="Culture-inputbox-list">
         <li>
-          <input type="text" placeholder="new column" />
+          <h5>TAT for supervisors</h5>
         </li>
         <li>
-         <button style={{background:"#2074d4",padding:"10px",border:"none"}}>Add</button>
+        <input type="text" placeholder="Turn Around Time" />
         </li>
        
       </ul>
       </div>
       </form>
       </div>
-    
-      </>
+ </>
   )
 }
 
-export default Total_Rewards_Statement
+export default Turn_Around_time
