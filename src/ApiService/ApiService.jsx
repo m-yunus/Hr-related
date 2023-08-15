@@ -1,7 +1,6 @@
 
 
-export const BaseUrl="https://hr-project.onrender.com"
 
-
+export const BaseUrl="https://hr-project.onrender.com";
 
 
