@@ -1,10 +1,39 @@
+import axios from "axios";
+import { useState } from "react";
+import { BaseUrl } from "../ApiService/ApiService";
 
 
 const HR_Review_Settings = () => {
+
+  const [allowhroverride,setAllowhroverride] = useState(false); 
+  const [justification_mandatory,setJustification_mandatory] = useState(false);
+ const [attachment_mandatory, setAttachment_mandatory] = useState(false);
+ const [edit_on_approval,setedit_on_approval] = useState(false);
+
+ const handleSubmit=async(e)=>{
+  e.preventDefault();
+  const headers = {
+    "x-access-token": sessionStorage.getItem("token"),
+  };
+  const HrformData={
+    allow_hr_overridet:allowhroverride,
+    justification_mandatory: justification_mandatory,
+    attachment_mandatory:attachment_mandatory,
+    edit_on_approval:edit_on_approval
+
+  }
+  try {
+  const response=  await axios.post(`${BaseUrl}/api/personalize/hr-review-settings`,HrformData,{headers})
+    console.log('Form data submitted successfully:',response.data);
+  } catch (error) {
+    console.error('Error submitting form data:', error);
+  }
+  }
+
   return (
     <>
      <div className="wrapper-right">
-      <form action="">
+      <form onSubmit={handleSubmit}>
       <div className="dash-right-top">
       
       <div className="pathname">
@@ -31,11 +60,12 @@ const HR_Review_Settings = () => {
               <input
                 type="radio"
                 name="HROverride"
-                value="yes"
-                defaultChecked
+                value="true"
+                checked={allowhroverride}
+                onChange={()=>setAllowhroverride(true)}
               />{" "}
               Yes
-              <input type="radio" name="HROverride" value="no" /> No
+              <input type="radio" name="HROverride" value="false" checked={!allowhroverride} onChange={()=>setAllowhroverride(false)} /> No
             </div>
           </div>
         </li>
@@ -48,11 +78,13 @@ const HR_Review_Settings = () => {
               <input
                 type="radio"
                 name="justification"
-                value="yes"
-                defaultChecked
+                value="true"
+                checked={justification_mandatory}
+                onChange={()=>setJustification_mandatory(true)}
               />{" "}
               Yes
-              <input type="radio" name="justification" value="no" /> No
+              <input type="radio" name="justification" value="false"  checked={!justification_mandatory}
+                onChange={()=>setJustification_mandatory(false)} /> No
             </div>
           </div>
         </li>
@@ -65,11 +97,13 @@ const HR_Review_Settings = () => {
               <input
                 type="radio"
                 name="Attachments"
-                value="yes"
-                defaultChecked
+                value="true"
+                checked={attachment_mandatory}
+                onChange={()=>setAttachment_mandatory(true)}
               />{" "}
               Yes
-              <input type="radio" name="Attachments" value="no" /> No
+              <input type="radio" name="Attachments" value="false"  checked={!attachment_mandatory}
+                onChange={()=>setAttachment_mandatory(false)} /> No
             </div>
           </div>
         </li>
@@ -81,12 +115,14 @@ const HR_Review_Settings = () => {
             <div className="radio-button-group" style={{ paddingLeft: "43px" }}>
               <input
                 type="radio"
-                name="Attachments"
-                value="yes"
-                defaultChecked
+                name="editonapproval"
+                value="true"
+                checked={edit_on_approval}
+                onChange={()=>setedit_on_approval(true)}
               />{" "}
               Yes
-              <input type="radio" name="Attachments" value="no" /> No
+              <input type="radio" name="editonapproval" value="no"   checked={!edit_on_approval}
+                onChange={()=>setedit_on_approval(false)}/> No
             </div>
           </div>
         </li>
