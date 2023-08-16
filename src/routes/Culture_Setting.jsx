@@ -8,7 +8,7 @@ const Culture_Setting = () => {
  
   const [ipCountry, setIpCountry] = useState("");
   const [countries, setCountries] = useState([]);
-  const [selectedCountryData, setSelectedCountryData] = useState({}); // Initialize with an empty object
+  const [selectedCountryData, setSelectedCountryData] = useState({}); 
 
   useEffect(() => {
     axios.get(`${BaseUrl}/api/user/getIP`).then(res => {
@@ -25,7 +25,7 @@ const Culture_Setting = () => {
 console.log(ipCountry);
   useEffect(() => {
     const foundCountryData = countries.find(country => country.country === ipCountry);
-    setSelectedCountryData(foundCountryData || {}); // Set to an empty object if not found
+    setSelectedCountryData(foundCountryData || {}); 
 
   }, [ipCountry, countries]);
   console.log(selectedCountryData);
@@ -56,7 +56,7 @@ console.log(ipCountry);
               <label htmlFor="country">Select country</label>
               <select
         className="countrySelection"
-        value={ipCountry} // Set selected value to ipCountry
+        value={ipCountry}
         onChange={event => setIpCountry(event.target.value)}
       >
         {countries.map(country => (
@@ -72,7 +72,7 @@ console.log(ipCountry);
       </li>
             <li>
             <label htmlFor="currency">Select Currency</label>
-              <input type="text" name="currency" value={selectedCountryData.currency} readOnly/>
+              <input type="text" name="currency" value={selectedCountryData.currency} />
             </li>
             <li>
               <label htmlFor="percentage">Select Percentage</label>
