@@ -1,11 +1,35 @@
+import axios from "axios";
+import { BaseUrl } from "../../ApiService/ApiService";
+import { useState } from "react";
+
 
 
 const Turn_Around_time = () => {
+  const [tatValue, setTatValue] = useState(0); // State to manage TAT value
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const headers = {
+      "x-access-token": sessionStorage.getItem("token"),
+    };
+
+    try {
+      const data = {
+        tat: tatValue, // Include the TAT value in the request data
+      };
+
+      const response = await axios.post(`${BaseUrl}/api/personalize/tat`, data, { headers });
+      console.log("form submitted successfully", response.data);
+    } catch (error) {
+      console.log("Api error", error);
+    }
+  };
+
   return (
  <>
  
  <div className="wrapper-right">
-      <form action="">
+      <form onSubmit={handleSubmit}>
      
         <div className="dash-right-top">
       
@@ -29,7 +53,12 @@ const Turn_Around_time = () => {
           <h5>TAT for supervisors</h5>
         </li>
         <li>
-        <input type="text" placeholder="Turn Around Time" />
+        <input
+                  type="number"
+                  placeholder="Turn Around Time"
+                  value={tatValue} 
+                  onChange={(e) => setTatValue(e.target.value)} 
+                />
         </li>
        
       </ul>

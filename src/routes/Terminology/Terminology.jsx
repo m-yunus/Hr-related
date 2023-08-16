@@ -1,12 +1,51 @@
-// import { useLocation } from "react-router-dom";
-import "./Terminology.css"
+import  { useState } from "react";
+import axios from "axios";
+import { BaseUrl } from "../../ApiService/ApiService";
+import "./Terminology.css";
+
 const Terminology = () => {
-    // const location = useLocation();
-  
+  const [terminologyValues, setTerminologyValues] = useState({
+    my_team: "",
+    salary: "",
+    compa_ratio: "",
+    percentage: "",
+    range_penetration: "",
+    recommendation: "",
+    new_salary: "",
+    median_salary: "",
+    medium_salary: "",
+    guideline:""
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const headers = {
+      "x-access-token": sessionStorage.getItem("token"),
+    };
+
+    try {
+      const response = await axios.post(
+        `${BaseUrl}/api/personalize/terminology`,
+        terminologyValues,
+        { headers }
+      );
+      console.log("form submitted successfully", response.data);
+    } catch (error) {
+      console.log("Api error", error);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setTerminologyValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
     return (
       <>
         <div className="wrapper-right">
-        <form action="">
+        <form onSubmit={handleSubmit}>
        
           <div className="dash-right-top">
         
@@ -28,48 +67,48 @@ const Terminology = () => {
   <ul className="Culture-inputbox-list">
     <li>My team</li>
     <li>
-      <label htmlFor="country">Select country</label>
-      <input type="text" name="country" />
+      <label htmlFor="my_team">Type your term</label>
+      <input type="text" name="my_team" value={terminologyValues.my_team} onChange={handleInputChange} />
     </li>
     <li>Salary</li>
     <li>
-      <label htmlFor="number">Select Number</label>
-      <input type="number" name="number" />
+      <label htmlFor="salary">Type your term</label>
+      <input type="text" name="salary" value={terminologyValues.salary} onChange={handleInputChange}/>
     </li>
     <li>Comp-ratio</li>
     <li>
-      <label htmlFor="currency">Select Currency</label>
-      <input type="text" name="currency" />
+      <label htmlFor="compa_ratio">Type your term</label>
+      <input type="text" name="compa_ratio" value={terminologyValues.compa_ratio} onChange={handleInputChange}/>
     </li>
     <li>Range penitriation</li>
     <li>
-      <label htmlFor="percentage">Select Percentage</label>
-      <input type="text" name="percentage" />
+      <label htmlFor="range_penetration">Type your term</label>
+      <input type="text" name="range_penetration" value={terminologyValues.range_penetration} onChange={handleInputChange} />
     </li>
     <li>Guideline</li>
     <li>
-      <label htmlFor="Date">Select date</label>
-      <input type="text" name="Date" />
+      <label htmlFor="guideline">Type your term</label>
+      <input type="text" name="guideline" value={terminologyValues.guideline} onChange={handleInputChange} />
     </li>
     <li>Recommendation</li>
     <li>
-      <label htmlFor="Timezone">Select Timezone</label>
-      <input type="text" name="Timezone" />
+      <label htmlFor="recommendation">Type your term</label>
+      <input type="text" name="recommendation" value={terminologyValues.recommendation} onChange={handleInputChange} />
     </li>
     <li>new salary</li>
     <li>
-      <label htmlFor="Timezone">Select Timezone</label>
-      <input type="text" name="Timezone" />
+      <label htmlFor="new_salary">Type your term</label>
+      <input type="text" name="new_salary" value={terminologyValues.new_salary} onChange={handleInputChange} />
     </li>
     <li>median salary</li>
     <li>
-      <label htmlFor="Timezone">Select Timezone</label>
-      <input type="text" name="Timezone" />
+      <label htmlFor="median_salary">Type your term</label>
+      <input type="text" name="median_salary" value={terminologyValues.median_salary} onChange={handleInputChange} />
     </li>
     <li>medium salary</li>
     <li>
-      <label htmlFor="Timezone">Select Timezone</label>
-      <input type="text" name="Timezone" />
+      <label htmlFor="medium_salary">Type your term</label>
+      <input type="text" name="medium_salary" value={terminologyValues.medium_salary} onChange={handleInputChange} />
     </li>
   </ul>
 </div>
