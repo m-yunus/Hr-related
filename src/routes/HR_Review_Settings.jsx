@@ -16,7 +16,7 @@ const HR_Review_Settings = () => {
     "x-access-token": sessionStorage.getItem("token"),
   };
   const HrformData={
-    allow_hr_overridet:allowhroverride,
+    allow_hr_override:allowhroverride,
     justification_mandatory: justification_mandatory,
     attachment_mandatory:attachment_mandatory,
     edit_on_approval:edit_on_approval
