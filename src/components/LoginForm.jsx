@@ -31,9 +31,10 @@ const LoginForm = () => {
       .post(Loginurl, urlEncodedData)
       .then((response) => {
         if (response.status === 200) {
+          console.log(response.data);
           const token = response.data.token; 
           sessionStorage.setItem('token', token);
-        
+     
           navigate('/personalize');
         }
       })
