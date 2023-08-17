@@ -108,6 +108,30 @@ const User_Creation = () => {
 
     fetchData();
   }, []);
+
+  const handleDeleteUser = async (userId) => {
+    const headers = {
+      "x-access-token": sessionStorage.getItem("token"),
+    };
+  
+    try {
+      const response = await axios.post(
+        `${BaseUrl}/api/personalize/user-deletion`,
+        { user_id: userId },
+        { headers }
+      );
+  
+      // Assuming the deletion was successful on the server
+      console.log("User deleted successfully:", response.data);
+  
+      // Update the list of users displayed on the frontend.
+       gettedData.filter((user) => console.log(user._id) );
+      setUsergettedData(response.data.users)
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  };
+
   console.log(gettedData);
 
   return (
@@ -149,10 +173,12 @@ const User_Creation = () => {
               <td>
                 <span>
                   <FaEdit />
+                  </span>
                   {""}
                   {""}
-                  <AiFillDelete />{" "}
-                </span>
+                  <span onClick={() => handleDeleteUser(item._id)} style={{cursor:"pointer"}}> <AiFillDelete /></span>
+                 {" "}
+                
               </td>
             </tr>
           ))}
