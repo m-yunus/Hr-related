@@ -53,3 +53,57 @@
   padding: 5px;
   border-radius: 5px;
   }
+
+  .accesitem-container{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .access-tem{
+    display: flex;
+    align-items: center;
+    padding: 1vw;
+  }
+  /* Add these styles to your usercreation.css or a separate CSS file */
+
+/* Table styling */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+  }
+  
+  .user-table th, .user-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Input and select styling */
+  .user-table input[type="text"],
+  .user-table select {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Button styling */
+  .user-table button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  /* Separate buttons with a little spacing */
+  .user-table button:last-child {
+    margin-right: 0;
+  }
+  
+  /* Apply different background color on hovering over a row */
+  .user-table tbody tr:hover {
+    background-color: #f5f5f5;
+  }
+  
