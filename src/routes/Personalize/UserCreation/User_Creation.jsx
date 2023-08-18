@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./usercreation.css";
 import { AiFillDelete } from "react-icons/ai";
 import axios from "axios";
-import { BaseUrl } from "../../ApiService/ApiService";
+import { BaseUrl } from "../../../ApiService/ApiService";
 import { FaEdit } from "react-icons/fa";
 
 const User_Creation = () => {

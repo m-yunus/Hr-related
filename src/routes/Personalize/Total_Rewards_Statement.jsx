@@ -1,5 +1,5 @@
 import  { useState } from "react";
-import { BaseUrl } from "../ApiService/ApiService";
+import { BaseUrl } from "../../ApiService/ApiService";
 import axios from "axios";
 
 const Total_Rewards_Statement = () => {

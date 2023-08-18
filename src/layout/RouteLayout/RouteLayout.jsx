@@ -2,22 +2,29 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Login from "../../pages/Login"
 import Register from "../../pages/Register"
 import Personalize from "../../pages/Personalize"
-import Culture_Setting from "../../routes/Culture_Setting"
-import Salary_components from "../../routes/Salary_components"
-import Integration_with_HRIS from "../../routes/Integration_with_HRIS"
-import Company_Profile from "../../routes/Company_Profile"
+import Culture_Setting from "../../routes/Personalize/Culture_Setting"
+import Salary_components from "../../routes/Personalize/Salary_components"
+import Integration_with_HRIS from "../../routes/Personalize/Integration_with_HRIS"
+import Company_Profile from "../../routes/Personalize/Company_Profile"
 
-import Workflow from "../../routes/Workflow"
-import SuperVisor_page from "../../routes/SuperVisor_page"
-import HR_Review_Settings from "../../routes/HR_Review_Settings"
-import History_Data from "../../routes/History_Data"
-import Total_Rewards_Statement from "../../routes/Total_Rewards_Statement"
-import ExclusionCriteria from "../../routes/Exclusion_Criteria"
-import Turn_Around_time from "../../routes/TurnAroundTime/Turn_Around_time"
-import Performance_based_bonus from "../../routes/Performance_based_bonus/Performance_based_bonus"
-import Terminology from "../../routes/Terminology/Terminology"
-import Addition_matrix from "../../routes/Additional Matrix/Addition_matrix"
-import User_Creation from "../../routes/UserCreation/User_Creation"
+import Workflow from "../../routes/Personalize/Workflow"
+import SuperVisor_page from "../../routes/Personalize/SuperVisor_page"
+import HR_Review_Settings from "../../routes/Personalize/HR_Review_Settings"
+
+import Total_Rewards_Statement from "../../routes/Personalize/Total_Rewards_Statement"
+import ExclusionCriteria from "../../routes/Personalize/Exclusion_Criteria"
+import Turn_Around_time from "../../routes/Personalize/TurnAroundTime/Turn_Around_time"
+import Performance_based_bonus from "../../routes/Personalize/Performance_based_bonus/Performance_based_bonus"
+import Terminology from "../../routes/Personalize/Terminology/Terminology"
+import Addition_matrix from "../../routes/Personalize/Additional Matrix/Addition_matrix"
+import User_Creation from "../../routes/Personalize/UserCreation/User_Creation"
+import Userplan from "../../routes/PlanStarting/Userplanmain/Userplan"
+import CycleEligibility from "../../routes/PlanStarting/Userplan/PlanData/cycleEligibility/CycleEligibility"
+import History_Data from "../../routes/Personalize/HistoryData/History_Data"
+import Component_Currency from "../../routes/PlanStarting/Component&Currency/Component_Currency"
+
+
+
 const RouteLayout = () => {
   return (
     <>
@@ -45,6 +52,11 @@ const RouteLayout = () => {
             <Route path="Additional_Matrix" element={<Addition_matrix/>} />
 
           </Route>
+         
+         
+        <Route path="/userplan" element={<Userplan/>}/>
+        <Route path="/Cycleligibilityplan" element={<CycleEligibility/>}/>
+        <Route path="/componentcurrency" element={<Component_Currency/>}/>
         </Routes>
       </BrowserRouter>
     </>

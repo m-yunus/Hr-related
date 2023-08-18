@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { BaseUrl } from "../ApiService/ApiService";
+import { BaseUrl } from "../../ApiService/ApiService";
 
 const SuperVisor_page = () => {
   const [loadPolicy, setLoadPolicy] = useState({});

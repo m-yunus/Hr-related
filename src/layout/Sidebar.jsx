@@ -27,6 +27,7 @@ const Sidebar = () => {
           <Link to="/personalize/Performance_based_bonus">Performance based bonus</Link>
           <Link to="/personalize/Terminology">Terminology</Link>
           <Link to="/personalize/Additional_Matrix">Additional Matrix</Link>
+          <Link to="/userplan">userplan</Link>
         </div>
       </div>
       </>

@@ -1,0 +1,30 @@
+.cyclecountainer{
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+.cycledate{
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+.cycleradios{
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+.cyclecontainer{
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.buttoncontainer{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}

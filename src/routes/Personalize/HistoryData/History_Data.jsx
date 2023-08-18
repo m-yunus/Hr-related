@@ -1,6 +1,6 @@
 import  { useState } from 'react';
 import * as XLSX from 'xlsx';
-
+import "./Historydata.css"
 const History_Data = () => {
   const [uploadedFile, setUploadedFile] = useState(null);
   const [tableData, setTableData] = useState([]);
@@ -51,27 +51,27 @@ const History_Data = () => {
             Upload Now
           </label>
           {uploadedFile && tableData.length > 0 && (
-            <div className="uploaded-table-container">
-              <table>
-                <thead>
-                  <tr>
-                    {Object.keys(tableData[0]).map((header, index) => (
-                      <th key={index}>{header}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {tableData.map((row, rowIndex) => (
-                    <tr key={rowIndex}>
-                      {Object.values(row).map((cellValue, cellIndex) => (
-                        <td key={cellIndex}>{cellValue}</td>
-                      ))}
-                    </tr>
+        <div className="uploaded-table-container">
+          <table>
+            <thead>
+              <tr>
+                {Object.keys(tableData[0]).map((header, index) => (
+                  <th key={index}>{header}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {tableData.map((row, rowIndex) => (
+                <tr key={rowIndex}>
+                  {Object.values(row).map((cellValue, cellIndex) => (
+                    <td key={cellIndex}>{cellValue}</td>
                   ))}
-                </tbody>
-              </table>
-            </div>
-          )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
         </div>
       </form>
     </div>

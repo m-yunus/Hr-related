@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { BaseUrl } from "../ApiService/ApiService";
+import { BaseUrl } from "../../ApiService/ApiService";
 
 const Culture_Setting = () => {
   const [ipCountry, setIpCountry] = useState("");

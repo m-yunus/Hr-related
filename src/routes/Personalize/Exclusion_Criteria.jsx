@@ -1,7 +1,7 @@
 import axios from "axios";
 import  { useState } from "react";
 import { FaTrash } from "react-icons/fa";
-import { BaseUrl } from "../ApiService/ApiService";
+import { BaseUrl } from "../../ApiService/ApiService";
 
 const ExclusionCriteria = () => {
   const [checkboxStates, setCheckboxStates] = useState({
