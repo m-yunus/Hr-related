@@ -12,7 +12,49 @@ import PayGroups from '../../paygroups/PayGroups';
 
 const Plandata = () => {
   const [currentStep, setCurrentStep] = useState(0);
-
+const[PlanData,setPlandataValues]=useState({
+  cycle_type:"",
+            cycle_from:"",
+            cycle_to:"",
+            eligibility_type:"",
+            eligibility_date:"",
+            eligibility_percentage:"",
+            salary_component:"",
+            salary_component_list:"",
+            global_currency:"",
+            global_currency_list:"",
+            prorate:"",
+            prorate_unit:"",
+            off_cycle_prorate:"",
+            off_cycle_prorate_unit:"",
+            parity:"",
+            merit_guidline:"",
+            supervisor_validation:"",
+            split_recommendation:"",
+            calculation_split_recommendation:"",
+            matrix_recommendation:"",
+            calculation_matrix_recommendation:"",
+            paygroups:"",
+            paygroups_name:"",
+            enable_recommendation:"",
+            pay_range_min:"",
+            pay_range_max:"",
+            enable_bonus_incentives:"",
+            use_diff_bonus_incentives:"",
+            basis_of_bonus:"",
+            bonus_list:"",
+            merit_group_list:"",
+            bonus_group_list:"",
+            budget_value:"",
+            budget_unit:"",
+            hold_back:"",
+            hold_back_value:"",
+            hold_back_unit:"",
+            statutory_increment:"",
+            employee_group:"",
+            increment_value:"",
+            increment_unit:"",
+})
   const handleNext = () => {
     setCurrentStep(currentStep + 1);
     console.log(currentStep);

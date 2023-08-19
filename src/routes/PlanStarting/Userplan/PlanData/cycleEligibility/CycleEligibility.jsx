@@ -5,7 +5,9 @@ import "./cycleEligibility.css";
 
 const CycleEligibility = ({onNext,onBack, currentStep }) => {
 
-
+const handleContinue=()=>{
+  onNext();
+}
   return (
    <>
 
@@ -86,7 +88,7 @@ const CycleEligibility = ({onNext,onBack, currentStep }) => {
       </div>
       <div className="button-container">
         {currentStep > 0 && <button onClick={onBack}>Back</button>}
-        <button onClick={onNext}>Continue</button>
+        <button onClick={handleContinue}>Continue</button>
       </div>
      
     </div>
