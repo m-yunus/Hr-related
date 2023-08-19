@@ -12,7 +12,7 @@ import PayGroups from '../paygroups/PayGroups';
 
 const Plandata = () => {
   const [currentStep, setCurrentStep] = useState(0);
-const[PlanData,setPlandataValues]=useState({
+const[Datavalues,setPlandataValues]=useState({
   cycle_type:"",
             cycle_from:"",
             cycle_to:"",
@@ -59,7 +59,7 @@ const[PlanData,setPlandataValues]=useState({
     setCurrentStep(currentStep + 1);
     console.log(currentStep);
   };
-console.log(PlanData,setPlandataValues());
+console.log(Datavalues,setPlandataValues());
   const handleBack = () => {
     setCurrentStep(currentStep - 1);
 
