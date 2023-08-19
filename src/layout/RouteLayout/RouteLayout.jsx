@@ -19,9 +19,9 @@ import Terminology from "../../routes/Personalize/Terminology/Terminology"
 import Addition_matrix from "../../routes/Personalize/Additional Matrix/Addition_matrix"
 import User_Creation from "../../routes/Personalize/UserCreation/User_Creation"
 import Userplan from "../../routes/PlanStarting/Userplanmain/Userplan"
-import CycleEligibility from "../../routes/PlanStarting/Userplan/PlanData/cycleEligibility/CycleEligibility"
 import History_Data from "../../routes/Personalize/HistoryData/History_Data"
-import Component_Currency from "../../routes/PlanStarting/Component&Currency/Component_Currency"
+
+import Plandata from "../../routes/PlanStarting/Userplanmain/Plandata/Plandata"
 
 
 
@@ -55,8 +55,7 @@ const RouteLayout = () => {
          
          
         <Route path="/userplan" element={<Userplan/>}/>
-        <Route path="/Cycleligibilityplan" element={<CycleEligibility/>}/>
-        <Route path="/componentcurrency" element={<Component_Currency/>}/>
+       <Route path="/Plandata" element={<Plandata/>}/>
         </Routes>
       </BrowserRouter>
     </>
