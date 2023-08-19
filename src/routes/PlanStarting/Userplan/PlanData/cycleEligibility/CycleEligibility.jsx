@@ -31,7 +31,7 @@ const handleContinue=()=>{
             value="halfYearly"
             
           />
-          Half-Yearly
+          Half-Yearlys
         </label>
         <label>
           <input
