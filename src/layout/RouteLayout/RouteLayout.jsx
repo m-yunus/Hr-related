@@ -20,8 +20,8 @@ import Addition_matrix from "../../routes/Personalize/Additional Matrix/Addition
 import User_Creation from "../../routes/Personalize/UserCreation/User_Creation"
 import Userplan from "../../routes/PlanStarting/Userplanmain/Userplan"
 import History_Data from "../../routes/Personalize/HistoryData/History_Data"
+import Plandata from "../../routes/PlanStarting/Plandata/Plandata"
 
-import Plandata from "../../routes/PlanStarting/Userplanmain/Plandata/Plandata"
 
 
 
