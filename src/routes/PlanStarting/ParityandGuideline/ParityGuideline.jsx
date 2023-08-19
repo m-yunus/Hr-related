@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
 
-const ParityGuideline = () => {
+const ParityGuideline = ({ onNext, onBack, currentStep }) => {
   return (
     <>    <div className="heading-container">
         <h4>Parity Measures</h4>
@@ -107,13 +107,9 @@ const ParityGuideline = () => {
         
       </div>
     
-      <div className="buttoncontainer">
-      <Link to="/Cycleligibilityplan">
-        <button>Back</button>
-      </Link>
-      <Link to="/">
-        <button>Continue</button>
-      </Link>
+      <div className="button-container">
+        {currentStep > 0 && <button onClick={onBack}>Back</button>}
+        <button onClick={onNext}>Continue</button>
       </div>
       </>
 

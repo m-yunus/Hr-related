@@ -1,5 +1,5 @@
 
-const Promotion = () => {
+const Promotion = ({ onNext, onBack, currentStep }) => {
   return (
     <>
      <div className="heading-container">
@@ -25,6 +25,10 @@ const Promotion = () => {
          No
         </label>
      </div>
+     <div className="button-container">
+        {currentStep > 0 && <button onClick={onBack}>Back</button>}
+        <button onClick={onNext}>Continue</button>
+      </div>
     </>
   )
 }

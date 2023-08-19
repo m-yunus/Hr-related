@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom"
 
 
-const Proration = () => {
+
+const Proration = ({ onNext, onBack, currentStep }) => {
   return (
     <>
      <div className="heading-container">
@@ -124,13 +124,9 @@ const Proration = () => {
         Hourly
         </label>
       </div>
-      <div className="buttoncontainer">
-      <Link to="/Cycleligibilityplan">
-        <button>Back</button>
-      </Link>
-      <Link to="/">
-        <button>Continue</button>
-      </Link>
+      <div className="button-container">
+        {currentStep > 0 && <button onClick={onBack}>Back</button>}
+        <button onClick={onNext}>Continue</button>
       </div>
     </>
   )

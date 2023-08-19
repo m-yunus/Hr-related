@@ -1,10 +1,9 @@
 
-import { Link } from "react-router-dom";
 
 import "./componentcurrency.css";
 import { AiFillPlusSquare } from "react-icons/ai";
 
-const Component_Currency = () => {
+const Component_Currency = ({ onNext, onBack, currentStep }) => {
   return (
     <>
       
@@ -63,13 +62,9 @@ const Component_Currency = () => {
         </label>
         <h5>Set Your currency rate against home currency</h5>
       </div>
-      <div className="buttoncontainer">
-      <Link to="/Cycleligibilityplan">
-        <button>Back</button>
-      </Link>
-      <Link to="/">
-        <button>Continue</button>
-      </Link>
+      <div className="button-container">
+        {currentStep > 0 && <button onClick={onBack}>Back</button>}
+        <button onClick={onNext}>Continue</button>
       </div>
 
     </>

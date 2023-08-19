@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom"
 
 
-const SplitandMatrix = () => {
+
+const SplitandMatrix = ({ onNext, onBack, currentStep }) => {
   return (
     <>
+     <div className="cyclewrapper">
      <div className="heading-container">
         <h4>Split Recommendation</h4>
         <div className="underline-grey"></div>
@@ -95,14 +96,12 @@ const SplitandMatrix = () => {
         </label>
         
       </div>
-      <div className="buttoncontainer">
-      <Link to="/Cycleligibilityplan">
-        <button>Back</button>
-      </Link>
-      <Link to="/">
-        <button>Continue</button>
-      </Link>
+      <div className="button-container">
+        {currentStep > 0 && <button onClick={onBack}>Back</button>}
+        <button onClick={onNext}>Continue</button>
       </div>
+      </div>
+     
     </>
    
   )

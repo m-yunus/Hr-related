@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
 
-const Lumpsumcorrection = () => {
+const Lumpsumcorrection = ({ onNext, onBack, currentStep }) => {
   return (
     <>
     <div className="heading-container">
@@ -72,14 +72,10 @@ const Lumpsumcorrection = () => {
     
   </div>
  
-  <div className="buttoncontainer">
-  <Link to="/Cycleligibilityplan">
-    <button>Back</button>
-  </Link>
-  <Link to="/">
-    <button>Continue</button>
-  </Link>
-  </div>
+  <div className="button-container">
+        {currentStep > 0 && <button onClick={onBack}>Back</button>}
+        <button onClick={onNext}>Continue</button>
+      </div>
 </>
   )
 }

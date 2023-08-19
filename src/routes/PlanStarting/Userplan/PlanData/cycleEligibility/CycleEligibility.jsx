@@ -3,7 +3,7 @@
 import { Link } from "react-router-dom";
 import "./cycleEligibility.css";
 
-const CycleEligibility = () => {
+const CycleEligibility = ({onNext,onBack, currentStep }) => {
 
 
   return (
@@ -84,13 +84,9 @@ const CycleEligibility = () => {
           Min Service During the Merit Cycle
         </label>
       </div>
-      <div className="buttoncontainer">
-      <Link to="/userplan">
-        <button>Back</button>
-      </Link>
-      <Link to="/componentcurrency">
-        <button>Continue</button>
-      </Link>
+      <div className="button-container">
+        {currentStep > 0 && <button onClick={onBack}>Back</button>}
+        <button onClick={onNext}>Continue</button>
       </div>
      
     </div>
