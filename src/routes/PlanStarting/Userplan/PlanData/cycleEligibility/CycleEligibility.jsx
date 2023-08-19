@@ -1,8 +1,9 @@
 
 
-import { Link } from "react-router-dom";
+
 import "./cycleEligibility.css";
 
+// eslint-disable-next-line react/prop-types
 const CycleEligibility = ({onNext,onBack, currentStep }) => {
 
 const handleContinue=()=>{

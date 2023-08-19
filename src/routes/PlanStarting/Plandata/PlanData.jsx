@@ -12,8 +12,8 @@ import PayGroups from '../paygroups/PayGroups';
 
 const Plandata = () => {
   const [currentStep, setCurrentStep] = useState(0);
-const[Datavalues,setPlandataValues]=useState({
-  cycle_type:"",
+const[Data,setPlandataValues]=useState({
+            cycle_type:"",
             cycle_from:"",
             cycle_to:"",
             eligibility_type:"",
@@ -55,15 +55,14 @@ const[Datavalues,setPlandataValues]=useState({
             increment_value:"",
             increment_unit:"",
 })
-  const handleNext = () => {
-    setCurrentStep(currentStep + 1);
-    console.log(currentStep);
-  };
-console.log(Datavalues,setPlandataValues());
-  const handleBack = () => {
-    setCurrentStep(currentStep - 1);
+const handleNext = () => {
+  setCurrentStep(prevStep => prevStep + 1);
+};
 
-  };
+const handleBack = () => {
+  setCurrentStep(prevStep => prevStep - 1);
+};
+
   console.log(currentStep);
   const getComponentByStep = (step) => {
     switch (step) {
