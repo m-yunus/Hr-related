@@ -57,6 +57,34 @@ const[Data,setPlandataValues]=useState({
             increment_value:"",
             increment_unit:"",
 })
+const [timeBased,setTimeBased]=useState({
+  name:"",
+  eligibility_data:"",
+  bonus_based_on:"",
+  bonus_percentage:"",
+  manager_recommendation:"",
+  manager_recommendation_percentage:"",
+  bonus_guideline_percentage:"",
+  pro_rate_bonus:"",
+  pro_rate_bonus_unit:"",
+})
+const [performanceBased,setPerformanceBased]=useState({
+  name:"",
+  eligibility_data:"",
+  bonus_based_on_salary:"",
+  bonus_percentage:"",
+  performance_rating:"",
+  name_of_bonus_factor:"",
+  bonus_table:"",
+  bonus_multiplier:"",
+  org_bonus_multiplier:"",
+  team_score:"",
+  manager_recommendation:"",
+  manager_recommendation_percentage:"",
+  bonus_guideline_percentage:"",
+  pro_rate_bonus:"",
+  pro_rate_bonus_unit:""
+})
 const handleNext = () => {
   setCurrentStep(prevStep => prevStep + 1);
   
@@ -65,7 +93,7 @@ const handleNext = () => {
 const handleBack = () => {
   setCurrentStep(prevStep => prevStep - 1);
 };
-console.log(Data);
+console.log(Data,timeBased,performanceBased);
   console.log(currentStep);
   const getComponentByStep = (step) => {
     switch (step) {
@@ -107,11 +135,11 @@ console.log(Data);
         );
         case 9:
           return (
-            <Time_based_bonus onNext={handleNext} onBack={handleBack} currentStep={currentStep} setPlandataValues={setPlandataValues}/>
+            <Time_based_bonus onNext={handleNext} onBack={handleBack} currentStep={currentStep} setTimeBased={setTimeBased}/>
           );
           case 10:
           return (
-            <Performancebasedbonus onNext={handleNext} onBack={handleBack} currentStep={currentStep} />
+            <Performancebasedbonus onNext={handleNext} onBack={handleBack} currentStep={currentStep} setPerformanceBased={setPerformanceBased}/>
           )
       default:
         return null;
