@@ -1,0 +1,15 @@
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999; /* Ensure it's displayed on top */
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 80%; /* Adjust as needed */
+    width: 400px; /* Adjust as needed */
+    color: red;
+  }
+  

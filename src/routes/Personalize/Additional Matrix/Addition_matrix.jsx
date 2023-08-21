@@ -1,6 +1,8 @@
 import  { useState } from "react";
 import axios from "axios";
 import { BaseUrl } from "../../../ApiService/ApiService";
+import SuccessModal from "../../../components/Loginsuccess/SuccessModal";
+import Error from "../../../components/Error/Error";
 
 const Addition_matrix = () => {
   const [matrixValues, setMatrixValues] = useState({
@@ -9,7 +11,10 @@ const Addition_matrix = () => {
     factor_one: "",
     factor_two: "",
   });
-
+ 
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError,setIserror]=useState(false);
+  const[errorStatus,seterrorStatus]=useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     const headers = {
@@ -23,8 +28,24 @@ const Addition_matrix = () => {
         { headers }
       );
       console.log("form submitted successfully", response.data,matrixValues);
+      if (response.status === 200) {
+        setIsSuccess(true)
+        setTimeout(()=>{
+          setIsSuccess(false)
+         
+        },3000)
+      }
     } catch (error) {
       console.log("Api error", error);
+
+      if(error.response.status ===401){
+        seterrorStatus(error.response.data.message)
+        setIserror(true)
+        setTimeout(()=>{
+          setIserror(false)
+         
+        },3000)
+      }
     }
     console.log(matrixValues);
   };
@@ -46,6 +67,7 @@ const Addition_matrix = () => {
   };
 
   return (
+    <>
     <div className="wrapper-right">
       <form onSubmit={handleSubmit}>
         <div className="dash-right-top">
@@ -117,6 +139,9 @@ const Addition_matrix = () => {
         </div>
       </form>
     </div>
+    {isSuccess && <SuccessModal status="Success" />}
+{isError && <Error status={errorStatus}/>}
+  </>
   );
 };
 

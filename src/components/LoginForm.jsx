@@ -4,12 +4,18 @@ import { FaUser, FaEye } from "react-icons/fa";
 import { useState } from "react";
 import axios from "axios";
 import { BaseUrl } from "../ApiService/ApiService";
+import "./login.css"
+import SuccessModal from "./Loginsuccess/SuccessModal";
+import Error from "./Error/Error";
 const LoginForm = () => {
   const [loginData, setLoginData] = useState({
     username: '',
     password: '',
   });
-  
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError,setIserror]=useState(false);
+  const[errorStatus,seterrorStatus]=useState("");
   const Loginurl=`${BaseUrl}/api/user/login`
 
   const navigate=useNavigate();
@@ -22,7 +28,7 @@ const LoginForm = () => {
   };
   const handlelogin = (e) => {
     e.preventDefault();
-
+   
     const urlEncodedData = new URLSearchParams();
     urlEncodedData.append('username', loginData.username);
     urlEncodedData.append('password', loginData.password);
@@ -31,16 +37,37 @@ const LoginForm = () => {
       .post(Loginurl, urlEncodedData)
       .then((response) => {
         if (response.status === 200) {
-          console.log(response.data);
+          console.log(response);
           const token = response.data.token; 
           sessionStorage.setItem('token', token);
-     
-          navigate('/personalize');
+          setIsSuccess(true)
+          if (!isSuccess){
+            setTimeout(()=>{
+              setIsSuccess(false)
+             
+            },3000)
+            navigate('/personalize');
+          }
+   
+            
+        
+          console.log(response);
+         
+  
+        
         }
       })
+      
       .catch((err) => {
         console.log(err);
-        
+        if(err.response.status ===401){
+          seterrorStatus(err.response.data.message)
+          setIserror(true)
+          setTimeout(()=>{
+            setIserror(false)
+           
+          },3000)
+        }
       });
   };
 
@@ -78,6 +105,11 @@ const LoginForm = () => {
           </form>
         </div>
       </div>
+   
+
+{/* Success Popup */}
+{isSuccess && <SuccessModal status="Success" />}
+{isError && <Error status={errorStatus}/>}
     </>
   );
 };
