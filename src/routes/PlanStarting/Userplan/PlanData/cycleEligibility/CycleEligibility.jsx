@@ -1,98 +1,128 @@
-
-
-
+import  { useState } from "react";
 import "./cycleEligibility.css";
 
-// eslint-disable-next-line react/prop-types
-const CycleEligibility = ({onNext,onBack, currentStep }) => {
+const CycleEligibility = ({ onNext, onBack, currentStep, setPlandataValues }) => {
+  // State variables for selected values
+  const [cycleFrequency, setCycleFrequency] = useState("yearly");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [eligibilityOption, setEligibilityOption] = useState("joinedUntil");
+  const [eligibilityDate, setEligibilityDate] = useState("");
+  const handleContinue = () => {
+   
 
-const handleContinue=()=>{
-  onNext();
-}
+    // Move to the next step
+    onNext();
+setPlandataValues((prevdata)=>({
+  ...prevdata,
+  cycle_type:cycleFrequency,
+  cycle_from:startDate,
+  cycle_to:endDate,
+  eligibility_type:eligibilityOption,
+  eligibility_date:eligibilityDate,
+}))
+
+
+  };
+  console.log(cycleFrequency,startDate,endDate,eligibilityOption);
   return (
-   <>
-
-     
-
+    <>
       {/* Radio buttons for cycle frequency */}
       <div className="cyclewrapper">
-      <div className="cyclecontainer">
-        <h5>What is merit cycle</h5>
-        <label>
-          <input
-            type="radio"
-            value="yearly"
-            
-          />
-          Yearly
-        </label>
-        <label>
-          <input
-            type="radio"
-            value="halfYearly"
-            
-          />
-          Half-Yearlys
-        </label>
-        <label>
-          <input
-            type="radio"
-            value="projectBased"
-          
-          />
-          Project-Based
-        </label>
-      </div>
+        <div className="cyclecontainer">
+          <h5>What is merit cycle</h5>
+          <label>
+            <input
+              type="radio"
+              value="yearly"
+              name="merit"
+              checked={cycleFrequency === "yearly"}
+              onChange={(e) => setCycleFrequency(e.target.value)}
+            />
+            Yearly
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="merit"
+              value="halfYearly"
+              checked={cycleFrequency === "halfYearly"}
+              onChange={(e) => setCycleFrequency(e.target.value)}
+            />
+            Half-Yearly
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="merit"
+              value="projectBased"
+              checked={cycleFrequency === "projectBased"}
+              onChange={(e) => setCycleFrequency(e.target.value)}
+            />
+            Project-Based
+          </label>
+        </div>
 
-      {/* Date pickers */}
-      <div className="cycledate">
-        <label>Start Date:</label>
-        <input
-          type="date"
-     
-        />
-      </div>
-      <div className="cycledate">
-        <label>End Date:</label>
-        <input
-          type="date"
-          
-        />
-      </div>
-
-      {/* Horizontal line */}
-      <hr />
-
-      {/* Radio buttons for eligibility */}
-      <div className="heading-container">
-        <h4>Eligibility</h4>
-        <div className="underline-grey"></div>
-      </div>
-      <div className="cycleradios">
-        <h5>How do you want to define eligibility?</h5>
-        <label>
+        {/* Date pickers */}
+        <div className="cycledate">
+          <label>Start Date:</label>
           <input
-            type="radio"
-            value="joinedUntil"
-            
+            type="date"
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
           />
-          Joined Until
-        </label>
-        <label>
+        </div>
+        <div className="cycledate">
+          <label>End Date:</label>
           <input
-            type="radio"
-            value="MinServiceduringMeritCycle"
-           
+            type="date"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
           />
-          Min Service During the Merit Cycle
-        </label>
+        </div>
+
+        {/* Horizontal line */}
+        <hr />
+
+        {/* Radio buttons for eligibility */}
+        <div className="heading-container">
+          <h4>Eligibility</h4>
+          <div className="underline-grey"></div>
+        </div>
+        <div className="cycleradios">
+          <h5>How do you want to define eligibility?</h5>
+          <label>
+            <input
+              type="radio"
+              value="joinedUntil"
+              checked={eligibilityOption === "joinedUntil"}
+              onChange={(e) => setEligibilityOption(e.target.value)}
+            />
+            Joined Until
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="MinServiceduringMeritCycle"
+              checked={eligibilityOption === "MinServiceduringMeritCycle"}
+              onChange={(e) => setEligibilityOption(e.target.value)}
+            />
+            Min Service During the Merit Cycle
+          </label>
+          <div className="cycledate">
+          <label>Start Date:</label>
+          <input
+            type="date"
+            value={eligibilityDate}
+            onChange={(e) => setEligibilityDate(e.target.value)}
+          />
+        </div>
+        </div>
+        <div className="button-container">
+          {currentStep > 0 && <button onClick={onBack}>Back</button>}
+          <button onClick={handleContinue}>Continue</button>
+        </div>
       </div>
-      <div className="button-container">
-        {currentStep > 0 && <button onClick={onBack}>Back</button>}
-        <button onClick={handleContinue}>Continue</button>
-      </div>
-     
-    </div>
     </>
   );
 };

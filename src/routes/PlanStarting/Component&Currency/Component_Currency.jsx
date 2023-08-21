@@ -1,12 +1,34 @@
-
-
+import  { useState } from "react";
 import "./componentcurrency.css";
 import { AiFillPlusSquare } from "react-icons/ai";
 
-const Component_Currency = ({ onNext, onBack, currentStep }) => {
+const Component_Currency = ({ onNext, onBack, currentStep,setPlandataValues }) => {
+  const [useSalaryComponents, setUseSalaryComponents] = useState("");
+  const [componentName, setComponentName] = useState("");
+  const [displayName, setDisplayName] = useState("");
+  const [useGlobalCurrency, setUseGlobalCurrency] = useState("");
+
+
+  const handleContinue = () => {
+  
+
+    // You can pass the data to the parent component or perform necessary actions here
+
+    onNext();
+    setPlandataValues((prevdata)=>({
+      ...prevdata,
+      salary_component:useSalaryComponents,
+      salary_component_list:{
+        componentName:componentName,
+        displayName:displayName
+      },
+      global_currency:useGlobalCurrency,
+      global_currency_list:"",
+    }))
+  };
+console.log(useSalaryComponents,componentName,displayName,useGlobalCurrency);
   return (
     <>
-      
       <div className="heading-container">
         <h4>Salary Component</h4>
         <div className="underline-grey"></div>
@@ -17,7 +39,8 @@ const Component_Currency = ({ onNext, onBack, currentStep }) => {
           <input
             type="radio"
             value="yes"
-            
+            checked={useSalaryComponents === "yes"}
+            onChange={(e) => setUseSalaryComponents(e.target.value)}
           />
           Yes
         </label>
@@ -25,16 +48,27 @@ const Component_Currency = ({ onNext, onBack, currentStep }) => {
           <input
             type="radio"
             value="no"
-           
+            checked={useSalaryComponents === "no"}
+            onChange={(e) => setUseSalaryComponents(e.target.value)}
           />
-         No
+          No
         </label>
       </div>
 
       <h5>Create salary Components using the text box below</h5>
       <div className="componentinputs">
-        <input type="text" placeholder="Component name" />
-        <input type="text" placeholder="Display name" />
+        <input
+          type="text"
+          placeholder="Component name"
+          value={componentName}
+          onChange={(e) => setComponentName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Display name"
+          value={displayName}
+          onChange={(e) => setDisplayName(e.target.value)}
+        />
         <button><AiFillPlusSquare/></button>
       </div>
        <hr />
@@ -48,7 +82,8 @@ const Component_Currency = ({ onNext, onBack, currentStep }) => {
           <input
             type="radio"
             value="yes"
-            
+            checked={useGlobalCurrency === "yes"}
+            onChange={(e) => setUseGlobalCurrency(e.target.value)}
           />
           Yes
         </label>
@@ -56,17 +91,17 @@ const Component_Currency = ({ onNext, onBack, currentStep }) => {
           <input
             type="radio"
             value="no"
-           
+            checked={useGlobalCurrency === "no"}
+            onChange={(e) => setUseGlobalCurrency(e.target.value)}
           />
-         No
+          No
         </label>
         <h5>Set Your currency rate against home currency</h5>
       </div>
       <div className="button-container">
         {currentStep > 0 && <button onClick={onBack}>Back</button>}
-        <button onClick={onNext}>Continue</button>
+        <button onClick={handleContinue}>Continue</button>
       </div>
-
     </>
   );
 }

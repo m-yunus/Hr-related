@@ -1,68 +1,92 @@
-import { Link } from "react-router-dom"
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./parityguideline.css";
 
+const ParityGuideline = ({ onNext, onBack, currentStep,setPlandataValues }) => {
+  const [preferredParityUnit, setPreferredParityUnit] = useState("");
+  const [enableMeritGuidelines, setEnableMeritGuidelines] = useState("");
+  const [supervisorRecommendationValidation, setSupervisorRecommendationValidation] = useState("");
 
-const ParityGuideline = ({ onNext, onBack, currentStep }) => {
+  const handleContinue = () => {
+   
+    setPlandataValues((prevdata)=>({
+      ...prevdata,
+      parity:preferredParityUnit,
+      merit_guidline:enableMeritGuidelines,
+      supervisor_validation:supervisorRecommendationValidation,
+    }))
+    // You can pass the parityGuidelineData to the parent component or perform necessary actions here
+
+    onNext();
+  };
+
   return (
-    <>    <div className="heading-container">
+    <>
+      <div className="heading-container">
         <h4>Parity Measures</h4>
         <div className="underline-grey"></div>
-      </div> 
+      </div>
       <div className="componentradios">
-        <h5>what is your preffered unit for understandng parity?</h5>
+        <h5>What is your preferred unit for understanding parity?</h5>
         <label>
           <input
             type="radio"
             value="Compa-ratio"
-            
+            checked={preferredParityUnit === "Compa-ratio"}
+            onChange={() => setPreferredParityUnit("Compa-ratio")}
           />
           Compa-ratio
         </label>
         <label>
           <input
             type="radio"
-            value="Range-penetreation"
-           
+            value="Range-penetration"
+            checked={preferredParityUnit === "Range-penetration"}
+            onChange={() => setPreferredParityUnit("Range-penetration")}
           />
-        Range-penetreation
+          Range-penetration
         </label>
         <label>
           <input
             type="radio"
             value="RAG"
-           
+            checked={preferredParityUnit === "RAG"}
+            onChange={() => setPreferredParityUnit("RAG")}
           />
-      RAG
+          RAG
         </label>
         <label>
           <input
             type="radio"
             value="Quartiles"
-           
+            checked={preferredParityUnit === "Quartiles"}
+            onChange={() => setPreferredParityUnit("Quartiles")}
           />
-        Quartiles
+          Quartiles
         </label>
         <label>
           <input
             type="radio"
             value="Percentiles"
-           
+            checked={preferredParityUnit === "Percentiles"}
+            onChange={() => setPreferredParityUnit("Percentiles")}
           />
-       Percentiles
+          Percentiles
         </label>
         <label>
           <input
             type="radio"
             value="Compa-zone"
-           
+            checked={preferredParityUnit === "Compa-zone"}
+            onChange={() => setPreferredParityUnit("Compa-zone")}
           />
-       Compa-zone
+          Compa-zone
         </label>
       </div>
 
-      
-     
-       <hr />
-       <div className="heading-container">
+      <hr />
+
+      <div className="heading-container">
         <h4>Merit Guidelines</h4>
         <div className="underline-grey"></div>
       </div>
@@ -72,7 +96,8 @@ const ParityGuideline = ({ onNext, onBack, currentStep }) => {
           <input
             type="radio"
             value="yes"
-            
+            checked={enableMeritGuidelines === "yes"}
+            onChange={() => setEnableMeritGuidelines("yes")}
           />
           Yes
         </label>
@@ -80,40 +105,41 @@ const ParityGuideline = ({ onNext, onBack, currentStep }) => {
           <input
             type="radio"
             value="no"
-           
+            checked={enableMeritGuidelines === "no"}
+            onChange={() => setEnableMeritGuidelines("no")}
           />
-         No
+          No
         </label>
-        
       </div>
+
       <div className="componentradios">
         <h5>Validation for supervisor Recommendation</h5>
         <label>
           <input
             type="radio"
             value="yes"
-            
+            checked={supervisorRecommendationValidation === "yes"}
+            onChange={() => setSupervisorRecommendationValidation("yes")}
           />
-          Recomendation is allowed within guidelines only
+          Recommendation is allowed within guidelines only
         </label>
         <label>
           <input
             type="radio"
             value="no"
-           
+            checked={supervisorRecommendationValidation === "no"}
+            onChange={() => setSupervisorRecommendationValidation("no")}
           />
-         Recomendation is allowed above the guidelines with a justification
+          Recommendation is allowed above the guidelines with a justification
         </label>
-        
       </div>
-    
+
       <div className="button-container">
         {currentStep > 0 && <button onClick={onBack}>Back</button>}
-        <button onClick={onNext}>Continue</button>
+        <button onClick={handleContinue}>Continue</button>
       </div>
-      </>
+    </>
+  );
+};
 
-  )
-}
-
-export default ParityGuideline
+export default ParityGuideline;

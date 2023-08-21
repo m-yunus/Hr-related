@@ -9,6 +9,8 @@ import Proration from '../Prorations/Proration';
 import SplitandMatrix from '../SplitandMatrix/splitandMatrix';
 import CycleEligibility from '../Userplan/PlanData/cycleEligibility/CycleEligibility';
 import PayGroups from '../paygroups/PayGroups';
+import Time_based_bonus from '../Time_based_Bonus/Time_based_bonus';
+import Performancebasedbonus from '../PerformanceBasedBonus/Performancebasedbonus';
 
 const Plandata = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -20,7 +22,7 @@ const[Data,setPlandataValues]=useState({
             eligibility_date:"",
             eligibility_percentage:"",
             salary_component:"",
-            salary_component_list:"",
+            salary_component_list:{},
             global_currency:"",
             global_currency_list:"",
             prorate:"",
@@ -57,51 +59,60 @@ const[Data,setPlandataValues]=useState({
 })
 const handleNext = () => {
   setCurrentStep(prevStep => prevStep + 1);
+  
 };
 
 const handleBack = () => {
   setCurrentStep(prevStep => prevStep - 1);
 };
-
+console.log(Data);
   console.log(currentStep);
   const getComponentByStep = (step) => {
     switch (step) {
       case 0:
         return (
-          <CycleEligibility onNext={handleNext} onBack={handleBack} currentStep={currentStep} />
+          <CycleEligibility onNext={handleNext} onBack={handleBack} currentStep={currentStep} setPlandataValues={setPlandataValues} />
         );
       case 1:
         return (
-          <Component_Currency onNext={handleNext} onBack={handleBack} currentStep={currentStep} />
+          <Component_Currency onNext={handleNext} onBack={handleBack} currentStep={currentStep} setPlandataValues={setPlandataValues} />
         );
       case 2:
         return (
-          <Proration onNext={handleNext} onBack={handleBack} currentStep={currentStep} />
+          <Proration onNext={handleNext} onBack={handleBack} currentStep={currentStep} setPlandataValues={setPlandataValues} />
         );
       case 3:
         return (
-          <ParityGuideline onNext={handleNext} onBack={handleBack} currentStep={currentStep} />
+          <ParityGuideline onNext={handleNext} onBack={handleBack} currentStep={currentStep} setPlandataValues={setPlandataValues} />
         );
       case 4:
         return (
-          <SplitandMatrix onNext={handleNext} onBack={handleBack} currentStep={currentStep} />
+          <SplitandMatrix onNext={handleNext} onBack={handleBack} currentStep={currentStep} setPlandataValues={setPlandataValues}/>
         );
       case 5:
         return (
-          <PayGroups onNext={handleNext} onBack={handleBack} currentStep={currentStep} />
+          <PayGroups onNext={handleNext} onBack={handleBack} currentStep={currentStep} setPlandataValues={setPlandataValues}/>
         );
       case 6:
         return (
-          <Lumpsumcorrection onNext={handleNext} onBack={handleBack} currentStep={currentStep} />
+          <Lumpsumcorrection onNext={handleNext} onBack={handleBack} currentStep={currentStep} setPlandataValues={setPlandataValues}/>
         );
       case 7:
         return (
-          <Promotion onNext={handleNext} onBack={handleBack} currentStep={currentStep} />
+          <Promotion onNext={handleNext} onBack={handleBack} currentStep={currentStep} setPlandataValues={setPlandataValues}/>
         );
       case 8:
         return (
-          <BonusIncentives onNext={handleNext} onBack={handleBack} currentStep={currentStep} />
+          <BonusIncentives onNext={handleNext} onBack={handleBack} currentStep={currentStep} setPlandataValues={setPlandataValues}/>
         );
+        case 9:
+          return (
+            <Time_based_bonus onNext={handleNext} onBack={handleBack} currentStep={currentStep} setPlandataValues={setPlandataValues}/>
+          );
+          case 10:
+          return (
+            <Performancebasedbonus onNext={handleNext} onBack={handleBack} currentStep={currentStep} />
+          )
       default:
         return null;
     }
