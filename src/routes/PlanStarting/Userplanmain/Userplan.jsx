@@ -8,7 +8,7 @@ const Userplan = () => {
   return (
     <div><Navbar/>
     <div className="content-plan">
-       <Link to="/Plandata">Beginhere</Link>
+       <Link to="/PlanData">Beginhere</Link>
        </div>
     </div>
        

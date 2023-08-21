@@ -56,7 +56,7 @@ const RouteLayout = () => {
          
          
         <Route path="/userplan" element={<Userplan/>}/>
-       <Route path="/Plandata" element={<PlanData/>}/>
+       <Route path="/PlanData" element={<PlanData/>}/>
         </Routes>
       </BrowserRouter>
     </>
