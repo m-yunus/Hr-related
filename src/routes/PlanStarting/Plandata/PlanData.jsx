@@ -12,7 +12,7 @@ import PayGroups from '../paygroups/PayGroups';
 import Time_based_bonus from '../Time_based_Bonus/Time_based_bonus';
 import Performancebasedbonus from '../PerformanceBasedBonus/Performancebasedbonus';
 
-const Plandata = () => {
+const PlanData = () => {
   const [currentStep, setCurrentStep] = useState(0);
 const[Data,setPlandataValues]=useState({
             cycle_type:"",
@@ -128,4 +128,4 @@ console.log(Data);
   );
 };
 
-export default Plandata;
+export default PlanData;
