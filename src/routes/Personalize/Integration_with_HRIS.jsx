@@ -1,11 +1,15 @@
 import axios from "axios";
 import { useState } from "react";
 import { BaseUrl } from "../../ApiService/ApiService";
+import SuccessModal from "../../components/Loginsuccess/SuccessModal";
+import Error from "../../components/Error/Error";
 
 const Integration_with_HRIS = () => {
   const [selectedFile, setSelectedFile] = useState({});
   const [integrationWithHr, setIntegrationwithHr] = useState(false);
-
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIserror] = useState(false);
+  const [errorStatus, seterrorStatus] = useState("");
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setSelectedFile(file);
@@ -16,14 +20,13 @@ const Integration_with_HRIS = () => {
     e.preventDefault();
     const headers = {
       "x-access-token": sessionStorage.getItem("token"),
-     
     };
     const formData = new FormData();
     formData.append("integration_with_hr", integrationWithHr);
     formData.append("integration_image", selectedFile);
-console.log(formData);
-console.log("in",integrationWithHr);
-console.log("out",selectedFile);
+    console.log(formData);
+    console.log("in", integrationWithHr);
+    console.log("out", selectedFile);
     try {
       const res = await axios.post(
         `${BaseUrl}/api/personalize/integration-with-hr`,
@@ -31,8 +34,22 @@ console.log("out",selectedFile);
         { headers }
       );
       console.log("Integration data submitted successfully:", res);
+      if (res.status === 200) {
+        setIsSuccess(true);
+        setTimeout(() => {
+          setIsSuccess(false);
+        }, 3000);
+      }
     } catch (error) {
       console.error("Error submitting form data:", error);
+
+      if (error.response.status === 401) {
+        seterrorStatus(error.response.data.message);
+        setIserror(true);
+        setTimeout(() => {
+          setIserror(false);
+        }, 3000);
+      }
     }
   };
   return (
@@ -138,6 +155,8 @@ console.log("out",selectedFile);
           </div>
         </form>
       </div>
+      {isSuccess && <SuccessModal status="Success" />}
+      {isError && <Error status={errorStatus} />}
     </>
   );
 };

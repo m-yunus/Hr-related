@@ -1,20 +1,24 @@
 import axios from "axios";
 import { useState } from "react";
 import { BaseUrl } from "../../ApiService/ApiService";
+import SuccessModal from "../../components/Loginsuccess/SuccessModal";
+import Error from "../../components/Error/Error";
 
 const Workflow = () => {
   const [checkboxStates, setCheckboxStates] = useState({
     supervisor: true,
     manager: false,
     sub_hr: false,
-    hr: true
+    hr: true,
   });
-
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIserror] = useState(false);
+  const [errorStatus, seterrorStatus] = useState("");
   const handleCheckboxChange = (event) => {
     const { name } = event.target;
     setCheckboxStates((prevStates) => ({
       ...prevStates,
-      [name]: !prevStates[name]
+      [name]: !prevStates[name],
     }));
   };
 
@@ -31,8 +35,22 @@ const Workflow = () => {
         { headers }
       );
       console.log("successfully submitted", response.data);
+      if (response.status === 200) {
+        setIsSuccess(true);
+        setTimeout(() => {
+          setIsSuccess(false);
+        }, 3000);
+      }
     } catch (error) {
       console.log("API error", error);
+
+      if (error.response.status === 401) {
+        seterrorStatus(error.response.data.message);
+        setIserror(true);
+        setTimeout(() => {
+          setIserror(false);
+        }, 3000);
+      }
     }
   };
 
@@ -105,6 +123,8 @@ const Workflow = () => {
           </div>
         </form>
       </div>
+      {isSuccess && <SuccessModal status="Success" />}
+      {isError && <Error status={errorStatus} />}
     </>
   );
 };

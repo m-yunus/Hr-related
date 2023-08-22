@@ -1,20 +1,24 @@
-import  { useState } from 'react';
-import * as XLSX from 'xlsx';
-import "./Historydata.css"
+import { useState } from "react";
+import * as XLSX from "xlsx";
+import "./Historydata.css";
 const History_Data = () => {
   const [uploadedFile, setUploadedFile] = useState(null);
   const [tableData, setTableData] = useState([]);
 
   const handleUpload = async (event) => {
     const file = event.target.files[0];
-    if (file && file.type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
+    if (
+      file &&
+      file.type ===
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    ) {
       setUploadedFile(file);
 
       // Parse and display data from the uploaded Excel file
       const reader = new FileReader();
       reader.onload = async (e) => {
         const data = e.target.result;
-        const workbook = XLSX.read(data, { type: 'binary' });
+        const workbook = XLSX.read(data, { type: "binary" });
         const sheetName = workbook.SheetNames[0];
         const sheet = workbook.Sheets[sheetName];
         const jsonData = XLSX.utils.sheet_to_json(sheet);
@@ -23,7 +27,7 @@ const History_Data = () => {
       reader.readAsBinaryString(file);
     } else {
       // Handle invalid file type
-      alert('Please upload a valid Excel file.');
+      alert("Please upload a valid Excel file.");
     }
   };
 
@@ -33,10 +37,10 @@ const History_Data = () => {
         <div className="dash-right-top">
           <div className="pathname">
             <h3>
-              <span style={{ color: "skyblue" }}>Personalize</span> <span>/ History Data</span>
+              <span style={{ color: "skyblue" }}>Personalize</span>{" "}
+              <span>/ History Data</span>
             </h3>
           </div>
-          
         </div>
         <div className="content-container">
           <div className="heading-container">
@@ -51,27 +55,27 @@ const History_Data = () => {
             Upload Now
           </label>
           {uploadedFile && tableData.length > 0 && (
-        <div className="uploaded-table-container">
-          <table>
-            <thead>
-              <tr>
-                {Object.keys(tableData[0]).map((header, index) => (
-                  <th key={index}>{header}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {tableData.map((row, rowIndex) => (
-                <tr key={rowIndex}>
-                  {Object.values(row).map((cellValue, cellIndex) => (
-                    <td key={cellIndex}>{cellValue}</td>
+            <div className="uploaded-table-container">
+              <table>
+                <thead>
+                  <tr>
+                    {Object.keys(tableData[0]).map((header, index) => (
+                      <th key={index}>{header}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {tableData.map((row, rowIndex) => (
+                    <tr key={rowIndex}>
+                      {Object.values(row).map((cellValue, cellIndex) => (
+                        <td key={cellIndex}>{cellValue}</td>
+                      ))}
+                    </tr>
                   ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       </form>
     </div>

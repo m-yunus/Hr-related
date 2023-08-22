@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { BaseUrl } from "../../ApiService/ApiService";
+import SuccessModal from "../../components/Loginsuccess/SuccessModal";
+import Error from "../../components/Error/Error";
 
 const SuperVisor_page = () => {
   const [loadPolicy, setLoadPolicy] = useState({});
@@ -9,10 +11,12 @@ const SuperVisor_page = () => {
     supervisor_attachment: false,
     supervisor_currency_button: false,
     supervisor_enable_chat: false,
-    supervisor_employee_letter: false
+    supervisor_employee_letter: false,
   });
-  const [videoUrl, setVideoUrl] = useState('');
-
+  const [videoUrl, setVideoUrl] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIserror] = useState(false);
+  const [errorStatus, seterrorStatus] = useState("");
   const handlePolicyFileChange = (event) => {
     const policyFile = event.target.files[0];
     setLoadPolicy(policyFile);
@@ -27,7 +31,7 @@ const SuperVisor_page = () => {
     const { name, value } = event.target;
     setRadioValues((prevValues) => ({
       ...prevValues,
-      [name]: value === "true"
+      [name]: value === "true",
     }));
   };
 
@@ -44,9 +48,18 @@ const SuperVisor_page = () => {
     formData.append("load_policy", loadPolicy);
     formData.append("load_learning_material", learningMaterial);
     formData.append("supervisor_attachment", radioValues.supervisor_attachment);
-    formData.append("supervisor_currency_button", radioValues.supervisor_currency_button);
-    formData.append("supervisor_enable_chat", radioValues.supervisor_enable_chat);
-    formData.append("supervisor_employee_letter", radioValues.supervisor_employee_letter);
+    formData.append(
+      "supervisor_currency_button",
+      radioValues.supervisor_currency_button
+    );
+    formData.append(
+      "supervisor_enable_chat",
+      radioValues.supervisor_enable_chat
+    );
+    formData.append(
+      "supervisor_employee_letter",
+      radioValues.supervisor_employee_letter
+    );
     formData.append("supervisor_video_url", videoUrl); // Append video URL to formData
 
     try {
@@ -56,8 +69,22 @@ const SuperVisor_page = () => {
         { headers }
       );
       console.log("Form data submitted successfully:", response.data);
+      if (response.status === 200) {
+        setIsSuccess(true);
+        setTimeout(() => {
+          setIsSuccess(false);
+        }, 3000);
+      }
     } catch (error) {
       console.error("Error submitting form data:", error);
+
+      if (error.response.status === 401) {
+        seterrorStatus(error.response.data.message);
+        setIserror(true);
+        setTimeout(() => {
+          setIserror(false);
+        }, 3000);
+      }
     }
   };
 
@@ -90,7 +117,10 @@ const SuperVisor_page = () => {
                     onChange={handlePolicyFileChange}
                   />
 
-                  <label htmlFor="file-input-policy" className="file-input-label">
+                  <label
+                    htmlFor="file-input-policy"
+                    className="file-input-label"
+                  >
                     Choose File
                   </label>
                 </div>
@@ -112,7 +142,10 @@ const SuperVisor_page = () => {
                     onChange={handleLearningChange}
                   />
 
-                  <label htmlFor="file-input-learning" className="file-input-label">
+                  <label
+                    htmlFor="file-input-learning"
+                    className="file-input-label"
+                  >
                     Choose File
                   </label>
                 </div>
@@ -124,12 +157,12 @@ const SuperVisor_page = () => {
                 )}
               </li>
               <li>
-              <input
-              type="text"
-              placeholder="paste Video Url"
-              value={videoUrl}
-              onChange={handleVideoUrlChange}
-            />
+                <input
+                  type="text"
+                  placeholder="paste Video Url"
+                  value={videoUrl}
+                  onChange={handleVideoUrlChange}
+                />
               </li>
             </ul>
             <div className="heading-container" style={{ marginTop: "3rem" }}>
@@ -142,7 +175,10 @@ const SuperVisor_page = () => {
                   <label>
                     <span>Do You Want Attachment for supervisor?</span>
                   </label>
-                  <div className="radio-button-group" style={{ marginLeft: "8rem" }}>
+                  <div
+                    className="radio-button-group"
+                    style={{ marginLeft: "8rem" }}
+                  >
                     <input
                       type="radio"
                       name="supervisor_attachment"
@@ -165,9 +201,14 @@ const SuperVisor_page = () => {
               <li>
                 <div className="radio-input-container">
                   <label>
-                    <span>Do You Want currency change button For supervisor? </span>
+                    <span>
+                      Do You Want currency change button For supervisor?{" "}
+                    </span>
                   </label>
-                  <div className="radio-button-group" style={{ paddingLeft: "43px" }}>
+                  <div
+                    className="radio-button-group"
+                    style={{ paddingLeft: "43px" }}
+                  >
                     <input
                       type="radio"
                       name="supervisor_currency_button"
@@ -198,7 +239,10 @@ const SuperVisor_page = () => {
                   <label>
                     <span>Enable Chat</span>
                   </label>
-                  <div className="radio-button-group" style={{ marginLeft: "8rem" }}>
+                  <div
+                    className="radio-button-group"
+                    style={{ marginLeft: "8rem" }}
+                  >
                     <input
                       type="radio"
                       name="supervisor_enable_chat"
@@ -221,9 +265,14 @@ const SuperVisor_page = () => {
               <li>
                 <div className="radio-input-container">
                   <label>
-                    <span>Do You Want Allow supervisors to access employee letters? </span>
+                    <span>
+                      Do You Want Allow supervisors to access employee letters?{" "}
+                    </span>
                   </label>
-                  <div className="radio-button-group" style={{ paddingLeft: "43px" }}>
+                  <div
+                    className="radio-button-group"
+                    style={{ paddingLeft: "43px" }}
+                  >
                     <input
                       type="radio"
                       name="supervisor_employee_letter"
@@ -247,6 +296,8 @@ const SuperVisor_page = () => {
           </div>
         </form>
       </div>
+      {isSuccess && <SuccessModal status="Success" />}
+      {isError && <Error status={errorStatus} />}
     </>
   );
 };

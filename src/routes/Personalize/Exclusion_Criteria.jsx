@@ -1,7 +1,9 @@
 import axios from "axios";
-import  { useState } from "react";
+import { useState } from "react";
 import { FaTrash } from "react-icons/fa";
 import { BaseUrl } from "../../ApiService/ApiService";
+import Error from "../../components/Error/Error";
+import SuccessModal from "../../components/Loginsuccess/SuccessModal";
 
 const ExclusionCriteria = () => {
   const [checkboxStates, setCheckboxStates] = useState({
@@ -11,6 +13,9 @@ const ExclusionCriteria = () => {
   const [criteria, setCriteria] = useState("");
   const [value, setValue] = useState("");
   const [exclusionList, setExclusionList] = useState([]);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIserror] = useState(false);
+  const [errorStatus, seterrorStatus] = useState("");
 
   const handleAdd = () => {
     const newExclusionList = {
@@ -20,7 +25,6 @@ const ExclusionCriteria = () => {
       bonus: checkboxStates.bonus,
     };
     setExclusionList((prevList) => [...prevList, newExclusionList]);
-  
   };
 
   const handleCheckboxChange = (event) => {
@@ -45,111 +49,133 @@ const ExclusionCriteria = () => {
     try {
       const response = await axios.post(
         `${BaseUrl}/api/personalize/exclusion-criteria`,
-        {exclusion_criteria:exclusionList},
+        { exclusion_criteria: exclusionList },
         { headers }
       );
       console.log("successfully submitted", response.data);
+      if (response.status === 200) {
+        setIsSuccess(true);
+        setTimeout(() => {
+          setIsSuccess(false);
+        }, 3000);
+      }
     } catch (error) {
       console.log("API error", error);
+
+      if (error.response.status === 401) {
+        seterrorStatus(error.response.data.message);
+        setIserror(true);
+        setTimeout(() => {
+          setIserror(false);
+        }, 3000);
+      }
     }
   };
 
   return (
     <>
       <div className="wrapper-right">
-       
-          <div className="dash-right-top">
-            <div className="pathname">
-              <h3>
-                <span style={{ color: "skyblue" }}>Personalize</span>{" "}
-                <span>/ Exclusion Criteria</span>
-              </h3>
-            </div>
-            <input type="submit" className="update-button" value="Update"  onClick={handleSubmit}/>
+        <div className="dash-right-top">
+          <div className="pathname">
+            <h3>
+              <span style={{ color: "skyblue" }}>Personalize</span>{" "}
+              <span>/ Exclusion Criteria</span>
+            </h3>
           </div>
-          <div className="content-container">
-            <div className="heading-container">
-              <h4>Exclusion Criteria</h4>
-              <div className="underline-grey"></div>
-            </div>
-            <ul className="Culture-inputbox-list">
-              <li>
-                <input
-                  type="text"
-                  placeholder="Select Criteria"
-                  value={criteria}
-                  onChange={(e) => setCriteria(e.target.value)}
-                />
-              </li>
-              <li>
-                <input
-                  type="text"
-                  placeholder="Select Value"
-                  value={value}
-                  onChange={(e) => setValue(e.target.value)}
-                />
-              </li>
-              <li>
-                <div className="checkbox-input-container">
-                  <div className="checkbox-exclusion">
-                    <input
-                      type="checkbox"
-                      name="merit"
-                      value="merit"
-                      checked={checkboxStates.merit}
-                      onChange={handleCheckboxChange}
-                    />
-                    <span className="checkbox-label">Merit</span>
-                  </div>
-                  <div className="checkbox-exclusion">
-                    <input
-                      type="checkbox"
-                      name="bonus"
-                      value="bonus"
-                      checked={checkboxStates.bonus}
-                      onChange={handleCheckboxChange}
-                    />
-                    <span className="checkbox-label">Bonus</span>
-                  </div>
+          <input
+            type="submit"
+            className="update-button"
+            value="Update"
+            onClick={handleSubmit}
+          />
+        </div>
+        <div className="content-container">
+          <div className="heading-container">
+            <h4>Exclusion Criteria</h4>
+            <div className="underline-grey"></div>
+          </div>
+          <ul className="Culture-inputbox-list">
+            <li>
+              <input
+                type="text"
+                placeholder="Select Criteria"
+                value={criteria}
+                onChange={(e) => setCriteria(e.target.value)}
+              />
+            </li>
+            <li>
+              <input
+                type="text"
+                placeholder="Select Value"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+              />
+            </li>
+            <li>
+              <div className="checkbox-input-container">
+                <div className="checkbox-exclusion">
+                  <input
+                    type="checkbox"
+                    name="merit"
+                    value="merit"
+                    checked={checkboxStates.merit}
+                    onChange={handleCheckboxChange}
+                  />
+                  <span className="checkbox-label">Merit</span>
                 </div>
-              </li>
-              <li>
-                <button className="update-button" onClick={handleAdd}>
-                  Add
+                <div className="checkbox-exclusion">
+                  <input
+                    type="checkbox"
+                    name="bonus"
+                    value="bonus"
+                    checked={checkboxStates.bonus}
+                    onChange={handleCheckboxChange}
+                  />
+                  <span className="checkbox-label">Bonus</span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <button className="update-button" onClick={handleAdd}>
+                Add
+              </button>
+            </li>
+          </ul>
+          <div className="heading-container" style={{ marginTop: "1rem" }}>
+            <h4>Exclusion list</h4>
+            <div className="underline-grey"></div>
+          </div>
+          <ul className="exclusion-list">
+            {exclusionList.map((exclusion, index) => (
+              <li key={index}>
+                <div style={{ textAlign: "justify" }}>
+                  <span>Criteria: {exclusion.criteria}</span>
+                  <span>Value: {exclusion.value}</span>
+                  <span
+                    className={exclusion.merit ? "merit-Bonus" : "bg-white"}
+                  >
+                    {exclusion.merit ? "Merit" : ""}
+                  </span>
+                  <span
+                    className={exclusion.bonus ? "merit-Bonus" : "bg-white"}
+                  >
+                    {exclusion.bonus ? "Bonus" : ""}
+                  </span>
+                </div>
+                <button
+                  className="delete-button"
+                  style={{ marginLeft: "1rem" }}
+                  onClick={() => handleDelete(index)}
+                >
+                  <FaTrash />
                 </button>
               </li>
-            </ul>
-            <div className="heading-container" style={{ marginTop: "1rem" }}>
-              <h4>Exclusion list</h4>
-              <div className="underline-grey"></div>
-            </div>
-            <ul className="exclusion-list">
-              {exclusionList.map((exclusion, index) =>  (
-
-                <li key={index}>
-                  <div style={{ textAlign: "justify" }}>
-                    <span>Criteria: {exclusion.criteria}</span>
-                    <span>Value: {exclusion.value}</span>
-                    <span className={exclusion.merit ? "merit-Bonus" : "bg-white"}>
-                      {exclusion.merit ? "Merit" : ""}
-                    </span>
-                    <span className={exclusion.bonus ? "merit-Bonus" : "bg-white"}>
-                      {exclusion.bonus ? "Bonus" : ""}
-                    </span>
-                  </div>
-                  <button
-                    className="delete-button"
-                    style={{ marginLeft: "1rem" }}
-                    onClick={() => handleDelete(index)}
-                  >
-                    <FaTrash />
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-       
+            ))}
+          </ul>
+        </div>
       </div>
+      {isSuccess && <SuccessModal status="Success" />}
+      {isError && <Error status={errorStatus} />}
     </>
   );
 };

@@ -2,6 +2,8 @@ import  { useState } from "react";
 import axios from "axios";
 import { BaseUrl } from "../../../ApiService/ApiService";
 import "./Terminology.css";
+import SuccessModal from "../../../components/Loginsuccess/SuccessModal";
+import Error from "../../../components/Error/Error";
 
 const Terminology = () => {
   const [terminologyValues, setTerminologyValues] = useState({
@@ -16,7 +18,9 @@ const Terminology = () => {
     medium_salary: "",
     guideline:""
   });
-
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError,setIserror]=useState(false);
+  const[errorStatus,seterrorStatus]=useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     const headers = {
@@ -30,8 +34,24 @@ const Terminology = () => {
         { headers }
       );
       console.log("form submitted successfully", response.data);
+      if (response.status === 200) {
+        setIsSuccess(true)
+        setTimeout(()=>{
+          setIsSuccess(false)
+         
+        },3000)
+      }
     } catch (error) {
       console.log("Api error", error);
+      
+      if(error.response.status ===401 ){
+        seterrorStatus(error.response.data.message);
+        setIserror(true)
+        setTimeout(()=>{
+          setIserror(false)
+         
+        },3000)
+      }
     }
   };
 
@@ -117,6 +137,8 @@ const Terminology = () => {
           </div>
         </form>
         </div>
+        {isSuccess && <SuccessModal status="Success" />}
+{isError && <Error status={errorStatus}/>}
       </>
     );
   };
