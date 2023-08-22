@@ -29,8 +29,15 @@ setPlandataValues((prevdata)=>({
     <>
       {/* Radio buttons for cycle frequency */}
       <div className="cyclewrapper">
+        <div className="cycle">
+          
+       
         <div className="cyclecontainer">
+          <div className="labels">
           <h5>What is merit cycle</h5>
+          </div>
+         
+          <div className="radiobuttons">
           <label>
             <input
               type="radio"
@@ -61,24 +68,30 @@ setPlandataValues((prevdata)=>({
             />
             Project-Based
           </label>
+          </div>
+        
         </div>
 
         {/* Date pickers */}
-        <div className="cycledate">
+        <div className="cyclecontainer">
+          <h5>What is the Period ?</h5>
+          <div className="inputcontainer">
           <label>Start Date:</label>
           <input
             type="date"
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
           />
-        </div>
-        <div className="cycledate">
+       
+        
           <label>End Date:</label>
           <input
             type="date"
             value={endDate}
             onChange={(e) => setEndDate(e.target.value)}
           />
+            </div>
+          
         </div>
 
         {/* Horizontal line */}
@@ -87,10 +100,12 @@ setPlandataValues((prevdata)=>({
         {/* Radio buttons for eligibility */}
         <div className="heading-container">
           <h4>Eligibility</h4>
-          <div className="underline-grey"></div>
+        
         </div>
-        <div className="cycleradios">
+        <div className="cyclecontainer">
           <h5>How do you want to define eligibility?</h5>
+         
+          <div className="radiobuttons">
           <label>
             <input
               type="radio"
@@ -109,7 +124,7 @@ setPlandataValues((prevdata)=>({
             />
             Min Service During the Merit Cycle
           </label>
-          <div className="cycledate">
+          <div className="inputcontainer">
           <label>Start Date:</label>
           <input
             type="date"
@@ -117,12 +132,15 @@ setPlandataValues((prevdata)=>({
             onChange={(e) => setEligibilityDate(e.target.value)}
           />
         </div>
+          </div>
+         
         </div>
-        <div className="button-container">
-          {currentStep > 0 && <button onClick={onBack}>Back</button>}
-          <button onClick={handleContinue}>Continue</button>
         </div>
       </div>
+      <div className="button-container">
+          {currentStep > 0 && <button onClick={onBack} className="back_button">Back</button>}
+          <button onClick={handleContinue} className="continue_button">Continue</button>
+        </div>
     </>
   );
 };

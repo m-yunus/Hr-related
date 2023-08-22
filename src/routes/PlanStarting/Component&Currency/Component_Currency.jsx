@@ -29,12 +29,17 @@ const Component_Currency = ({ onNext, onBack, currentStep,setPlandataValues }) =
 console.log(useSalaryComponents,componentName,displayName,useGlobalCurrency);
   return (
     <>
+    <div className="cyclewrapper">
+    <div className="cycle">
+   
       <div className="heading-container">
         <h4>Salary Component</h4>
-        <div className="underline-grey"></div>
+      
       </div> 
-      <div className="componentradios">
+      <div className="cyclecontainer">
         <h5>Do you want to use Salary Components?</h5>
+        <div className="radiobuttons">
+
         <label>
           <input
             type="radio"
@@ -53,11 +58,15 @@ console.log(useSalaryComponents,componentName,displayName,useGlobalCurrency);
           />
           No
         </label>
+        </div>
+      
       </div>
 
+     
+      <div className="cyclecontainer">
       <h5>Create salary Components using the text box below</h5>
-      <div className="componentinputs">
-        <input
+      <div className="inputcontainer">
+      <input
           type="text"
           placeholder="Component name"
           value={componentName}
@@ -69,16 +78,19 @@ console.log(useSalaryComponents,componentName,displayName,useGlobalCurrency);
           value={displayName}
           onChange={(e) => setDisplayName(e.target.value)}
         />
-        <button><AiFillPlusSquare/></button>
+        <button className="continue_button"><AiFillPlusSquare/></button>
+      </div>
+       
       </div>
        <hr />
        <div className="heading-container">
         <h4>Global Currency</h4>
-        <div className="underline-grey"></div>
+      
       </div>
-      <div className="componentradios">
+      <div className="cyclecontainer">
         <h5>Do you want to use Global currency?</h5>
-        <label>
+         <div className="radiobuttons">
+         <label>
           <input
             type="radio"
             value="yes"
@@ -96,12 +108,19 @@ console.log(useSalaryComponents,componentName,displayName,useGlobalCurrency);
           />
           No
         </label>
-        <h5>Set Your currency rate against home currency</h5>
+
+         </div>
+      
+        
+      </div>
+      <h5>Set Your currency rate against home currency</h5>
+      </div>
       </div>
       <div className="button-container">
-        {currentStep > 0 && <button onClick={onBack}>Back</button>}
-        <button onClick={handleContinue}>Continue</button>
+        {currentStep > 0 && <button onClick={onBack} className="back_button">Back</button>}
+        <button onClick={handleContinue} className="continue_button">Continue</button>
       </div>
+
     </>
   );
 }

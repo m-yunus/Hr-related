@@ -24,12 +24,16 @@ const Proration = ({ onNext, onBack, currentStep,setPlandataValues }) => {
 
   return (
     <>
+     <div className="cyclewrapper">
+    <div className="cycle">
       <div className="heading-container">
         <h4>ProRate</h4>
-        <div className="underline-grey"></div>
+       
       </div>
-      <div className="componentradios">
+      <div className="cyclecontainer">
+
         <h5>Do you want to pro-rate increment to service?</h5>
+        <div className="radiobuttons">
         <label>
           <input
             type="radio"
@@ -48,10 +52,12 @@ const Proration = ({ onNext, onBack, currentStep,setPlandataValues }) => {
           />
           No
         </label>
+        </div>
       </div>
 
-      <div className="componentradios">
+      <div className="cyclecontainer">
         <h5>Please select the pro-ration unit:</h5>
+        <div className="radiobuttons">
         <label>
           <input
             type="radio"
@@ -63,15 +69,16 @@ const Proration = ({ onNext, onBack, currentStep,setPlandataValues }) => {
         </label>
         {/* ... Repeat for other pro-ration units */}
       </div>
-
+      </div>
       <hr />
 
       <div className="heading-container">
         <h4>Off Cycle Pro Rate</h4>
-        <div className="underline-grey"></div>
+        
       </div>
-      <div className="componentradios">
+      <div className="cyclecontainer">
         <h5>Do you want to pro-rate off cycle increments?</h5>
+        <div className="radiobuttons">
         <label>
           <input
             type="radio"
@@ -90,10 +97,12 @@ const Proration = ({ onNext, onBack, currentStep,setPlandataValues }) => {
           />
           No
         </label>
+        </div>
       </div>
 
-      <div className="componentradios">
+      <div className="cyclecontainer">
         <h5>Please select the pro-ration unit:</h5>
+        <div className="radiobuttons">
         <label>
           <input
             type="radio"
@@ -105,10 +114,12 @@ const Proration = ({ onNext, onBack, currentStep,setPlandataValues }) => {
         </label>
         {/* ... Repeat for other pro-ration units */}
       </div>
-
+      </div>
+      </div>
+      </div>
       <div className="button-container">
-        {currentStep > 0 && <button onClick={onBack}>Back</button>}
-        <button onClick={handleContinue}>Continue</button>
+        {currentStep > 0 && <button onClick={onBack} className="back_button">Back</button>}
+        <button onClick={handleContinue} className="continue_button">Continue</button>
       </div>
     </>
   );

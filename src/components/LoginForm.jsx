@@ -12,7 +12,7 @@ const LoginForm = () => {
     username: '',
     password: '',
   });
-  const [isLoading, setIsLoading] = useState(false);
+  
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError,setIserror]=useState(false);
   const[errorStatus,seterrorStatus]=useState("");
@@ -37,7 +37,7 @@ const LoginForm = () => {
       .post(Loginurl, urlEncodedData)
       .then((response) => {
         if (response.status === 200) {
-          console.log(response);
+          console.log(response.config.data);
           const token = response.data.token; 
           sessionStorage.setItem('token', token);
           setIsSuccess(true)
