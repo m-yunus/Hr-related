@@ -17,11 +17,14 @@ const PayGroups = ({ onNext, onBack, currentStep , setPlandataValues}) => {
   };
 
   return (
+    <div className="cyclewrapper">
+    <div className="cycle">
     <div className="heading-container">
       <h4>Pay Groups</h4>
-      <div className="underline-grey"></div>
-      <div className="componentradios">
+   
+      <div className="cyclecontainer">
         <h5>Do you want to apply different merit rules for different employee groups?</h5>
+        <div className="radiobuttons">
         <label>
           <input
             type="radio"
@@ -40,23 +43,28 @@ const PayGroups = ({ onNext, onBack, currentStep , setPlandataValues}) => {
           />
           No
         </label>
+        </div>
       </div>
 
-      <div className="componentradios">
+      <div className="cyclecontainer">
         <h5>What is the basis of pay group?</h5>
+        <div className="inputcontainer">
         <input
           type="text"
           placeholder="group criteria"
           value={payGroupBasis}
           onChange={(e) => setPayGroupBasis(e.target.value)}
         />
+        </div>
       </div>
-
+      </div>
+      </div>
+    
       <div className="button-container">
-        {currentStep > 0 && <button onClick={onBack}>Back</button>}
-        <button onClick={handleContinue}>Continue</button>
+        {currentStep > 0 && <button onClick={onBack} className="back_button">Back</button>}
+        <button onClick={handleContinue} className="continue_button">Continue</button>
       </div>
-    </div>
+      </div>
   );
 };
 

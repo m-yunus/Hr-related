@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import "./performancebasedbonus.css"
 const Performancebasedbonus = ({ onNext, onBack, currentStep,setPerformanceBased }) => {
   const [formData, setFormData] = useState({
     bonusProgram: '',
@@ -52,33 +52,41 @@ const Performancebasedbonus = ({ onNext, onBack, currentStep,setPerformanceBased
   return (
     <>
       <div className="cyclewrapper">
+        <div className="cycle">
+
+       
         <div className="heading-container">
           <h4>Performance Based Bonus</h4>
-          <div className="underline-grey"></div>
+   
         </div>
 
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>What do you call the bonus program?</h5>
+          <div className="inputcontainer">
           <input
             type="text"
             value={formData.bonusProgram}
             onChange={(e) => handleInputChange('bonusProgram', e.target.value)}
           />
+          </div>
         </div>
 
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>What is the eligibility? (joined on or before)</h5>
+          <div className="inputcontainer">
           <input
             type="date"
             value={formData.eligibilityDate}
             onChange={(e) => handleInputChange('eligibilityDate', e.target.value)}
           />
+          </div>
         </div>
 
-        <hr />
+   
 
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>Is the bonus based on salary?</h5>
+          <div className="radiobuttons">
           <label>
             <input
               type="radio"
@@ -97,19 +105,24 @@ const Performancebasedbonus = ({ onNext, onBack, currentStep,setPerformanceBased
             />
             No
           </label>
+          </div>
+          
         </div>
 
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>How much bonus as a percentage of salary:</h5>
+          <div className="inputcontainer">
           <input
             type="text"
             value={formData.bonusPercentage}
             onChange={(e) => handleInputChange('bonusPercentage', e.target.value)}
           />
+          </div>
         </div>
       
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>Is the bonus based on Performance rating</h5>
+                <div className="radiobuttons">
           <label>
             <input
               type="radio"
@@ -128,19 +141,23 @@ const Performancebasedbonus = ({ onNext, onBack, currentStep,setPerformanceBased
             />
             No
           </label>
+          </div>
         </div>
 
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>Name of the bonus factor</h5>
+          <div className="inputcontainer">
           <input
             type="text"
             value={formData.bonusFactorName}
             onChange={(e) => handleInputChange('bonusFactorName', e.target.value)}
           />
+          </div>
         </div>
 
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>Do you want to use bonus multiplier</h5>
+          <div className="inputcontainer">
           <input
             type="text"
             value={formData.useBonusMultiplier[0]}
@@ -156,9 +173,11 @@ const Performancebasedbonus = ({ onNext, onBack, currentStep,setPerformanceBased
             value={formData.useBonusMultiplier[2]}
             onChange={(e) => handleInputChange('useBonusMultiplier', [formData.useBonusMultiplier[0], formData.useBonusMultiplier[1], e.target.value])}
           />
+          </div>
         </div>
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>Do you want to allow manager recommendation</h5>
+          <div className="radiobuttons">
           <label>
             <input
               type="radio"
@@ -177,28 +196,35 @@ const Performancebasedbonus = ({ onNext, onBack, currentStep,setPerformanceBased
             />
             No
           </label>
+          </div>
         </div>
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>what is the manager recommendation percentage</h5>
+          <div className="inputcontainer">
           <input
             type="text"
             value={formData.managerRecommendationPercentage}
             onChange={(e) => handleInputChange('managerRecommendationPercentage', e.target.value)}
           />
+          </div>
         </div>
         
 
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>what is the bonus guideline percentage</h5>
+          <div className="inputcontainer">
           <input
             type="text"
             value={formData.bonusGuidelinePercentage}
             onChange={(e) => handleInputChange('bonusGuidelinePercentage', e.target.value)}
           />
+          </div>
+         
         </div>
 
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>Do you like to prorate the bonus</h5>
+          <div className="radiobuttons">
           <label>
             <input
               type="radio"
@@ -217,10 +243,14 @@ const Performancebasedbonus = ({ onNext, onBack, currentStep,setPerformanceBased
             />
             No
           </label>
+          </div>
         </div>
 
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>What is the preferred unit to prorate</h5>
+          <div className="radiobuttons">
+
+         
           <label>
             <input
               type="radio"
@@ -257,11 +287,12 @@ const Performancebasedbonus = ({ onNext, onBack, currentStep,setPerformanceBased
             />
             Hourly
           </label>
+          </div>
         </div>
-
+        </div>
         <div className="button-container">
-          {currentStep > 0 && <button onClick={onBack}>Back</button>}
-          <button onClick={handleContinue}>Continue</button>
+          {currentStep > 0 && <button onClick={onBack} className='back_button'>Back</button>}
+          <button onClick={handleContinue} className='continue_button'>Continue</button>
         </div>
       </div>
     </>

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-
+import  { useState } from 'react';
+import "./Timebase.css"
 const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased }) => {
   const [formData, setFormData] = useState({
     bonusProgram: '',
@@ -12,6 +12,8 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased }) => {
     prorateBonus: '',
     preferredProrateUnit: '',
   });
+
+
 
   const handleInputChange = (field, value) => {
     setFormData((prevData) => ({
@@ -43,33 +45,42 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased }) => {
   return (
     <>
       <div className="cyclewrapper">
+    
+    <div className="cycle">
         <div className="heading-container">
           <h4>Time Based Bonus</h4>
-          <div className="underline-grey"></div>
+
         </div>
 
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>What do you call the bonus program?</h5>
+          <div className="inputcontainer">
           <input
             type="text"
             value={formData.bonusProgram}
             onChange={(e) => handleInputChange('bonusProgram', e.target.value)}
           />
+          </div>
+         
         </div>
 
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>What is the eligibility? (joined on or before)</h5>
+          <div className="inputcontainer">
           <input
             type="date"
             value={formData.eligibilityDate}
             onChange={(e) => handleInputChange('eligibilityDate', e.target.value)}
           />
+          </div>
+          
         </div>
 
-        <hr />
+       
 
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>Is the bonus based on salary?</h5>
+          <div className="inputcontainer">
           <label>
             <input
               type="radio"
@@ -88,19 +99,25 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased }) => {
             />
             No
           </label>
+          </div>
+      
         </div>
 
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>How much bonus as a percentage of salary:</h5>
+          <div className="inputcontainer">
           <input
             type="text"
             value={formData.bonusPercentage}
             onChange={(e) => handleInputChange('bonusPercentage', e.target.value)}
           />
+          </div>
+          
         </div>
 
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>Do you want to allow manager-recommendation?</h5>
+          <div className="radiobuttons">
           <label>
             <input
               type="radio"
@@ -119,28 +136,35 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased }) => {
             />
             No
           </label>
+          </div>
         </div>
 
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>What is the manager recommendation percentage?</h5>
+          <div className="inputcontainer">
           <input
             type="text"
             value={formData.managerRecommendation}
             onChange={(e) => handleInputChange('managerRecommendation', e.target.value)}
           />
+          </div>
         </div>
 
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>What is the bonus guideline percentage?</h5>
+          <div className="inputcontainer">
           <input
             type="text"
             value={formData.bonusGuidelinePercentage}
             onChange={(e) => handleInputChange('bonusGuidelinePercentage', e.target.value)}
           />
+          </div>
+        
         </div>
       
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>Do you like to prorate the bonus?</h5>
+          <div className="radiobuttons">
           <label>
             <input
               type="radio"
@@ -159,10 +183,12 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased }) => {
             />
             No
           </label>
+          </div>
         </div>
 
-        <div className="componentradios">
+        <div className="cyclecontainer">
           <h5>What is the preferred unit to prorate?</h5>
+          <div className="radiobuttons">
           <label>
             <input
               type="radio"
@@ -199,11 +225,14 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased }) => {
             />
             Hourly
           </label>
+          </div>
+          
         </div>
+</div>
 
         <div className="button-container">
-          {currentStep > 0 && <button onClick={onBack}>Back</button>}
-          <button onClick={handleContinue}>Continue</button>
+          {currentStep > 0 && <button onClick={onBack} className='back_button'>Back</button>}
+          <button onClick={handleContinue} className='continue_button'>Continue</button>
         </div>
       </div>
     </>

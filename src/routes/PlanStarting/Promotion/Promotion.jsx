@@ -17,11 +17,14 @@ const Promotion = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
   };
 
   return (
+    <div className="cyclewrapper">
+    <div className="cycle">
     <div className="heading-container">
       <h4>Promotions</h4>
-      <div className="underline-grey"></div>
-      <div className="componentradios">
+      
+      <div className="cyclecontainer">
         <h5>Do you want to enable promotion recommendations?</h5>
+        <div className="radiobuttons">
         <label>
           <input
             type="radio"
@@ -40,10 +43,13 @@ const Promotion = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
           />
           No
         </label>
+        </div>
+      </div>
+      </div>
       </div>
       <div className="button-container">
-        {currentStep > 0 && <button onClick={onBack}>Back</button>}
-        <button onClick={handleContinue}>Continue</button>
+        {currentStep > 0 && <button onClick={onBack} className="back_button">Back</button>}
+        <button onClick={handleContinue} className="continue_button">Continue</button>
       </div>
     </div>
   );

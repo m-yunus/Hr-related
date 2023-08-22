@@ -22,12 +22,15 @@ const ParityGuideline = ({ onNext, onBack, currentStep,setPlandataValues }) => {
 
   return (
     <>
+     <div className="cyclewrapper">
+    <div className="cycle">
       <div className="heading-container">
         <h4>Parity Measures</h4>
-        <div className="underline-grey"></div>
+
       </div>
-      <div className="componentradios">
+      <div className="cyclecontainer">
         <h5>What is your preferred unit for understanding parity?</h5>
+        <div className="radiobuttons">
         <label>
           <input
             type="radio"
@@ -82,17 +85,19 @@ const ParityGuideline = ({ onNext, onBack, currentStep,setPlandataValues }) => {
           />
           Compa-zone
         </label>
+        </div>
       </div>
 
       <hr />
 
       <div className="heading-container">
         <h4>Merit Guidelines</h4>
-        <div className="underline-grey"></div>
+      
       </div>
-      <div className="componentradios">
+      <div className="cyclecontainer">
         <h5>Do you want to enable merit guidelines?</h5>
-        <label>
+       <div className="radiobuttons">
+       <label>
           <input
             type="radio"
             value="yes"
@@ -110,10 +115,15 @@ const ParityGuideline = ({ onNext, onBack, currentStep,setPlandataValues }) => {
           />
           No
         </label>
+
+        
+       </div>
+   
       </div>
 
-      <div className="componentradios">
+      <div className="cyclecontainer">
         <h5>Validation for supervisor Recommendation</h5>
+        <div className="radiobuttons">
         <label>
           <input
             type="radio"
@@ -132,12 +142,17 @@ const ParityGuideline = ({ onNext, onBack, currentStep,setPlandataValues }) => {
           />
           Recommendation is allowed above the guidelines with a justification
         </label>
-      </div>
 
-      <div className="button-container">
-        {currentStep > 0 && <button onClick={onBack}>Back</button>}
-        <button onClick={handleContinue}>Continue</button>
+        </div>
+       
       </div>
+      </div>
+      </div>
+      <div className="button-container">
+        {currentStep > 0 && <button onClick={onBack} className="back_button">Back</button>}
+        <button onClick={handleContinue} className="continue_button">Continue</button>
+      </div>
+     
     </>
   );
 };

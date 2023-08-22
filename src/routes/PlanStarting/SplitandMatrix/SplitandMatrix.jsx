@@ -24,10 +24,12 @@ const SplitandMatrix = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
     <div className="cyclewrapper">
       <div className="heading-container">
         <h4>Split Recommendation</h4>
-        <div className="underline-grey"></div>
+     
       </div>
-      <div className="componentradios">
+      <div className="cyclecontainer">
         <h5>Do you want to enable split recommendation?</h5>
+
+        <div className="radiobuttons">
         <label>
           <input
             type="radio"
@@ -46,11 +48,14 @@ const SplitandMatrix = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
           />
           No
         </label>
+        </div>
       </div>
 
-      <div className="componentradios">
+      <div className="cyclecontainer">
         <h5>What is the calculation of split recommendations:</h5>
-        <label>
+       
+        <div className="radiobuttons">
+          <label>
           <input
             type="radio"
             value="Average"
@@ -68,16 +73,18 @@ const SplitandMatrix = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
           />
           Highest
         </label>
+        </div>
       </div>
 
       <hr />
 
       <div className="heading-container">
         <h4>Matrix Recommendations</h4>
-        <div className="underline-grey"></div>
+     
       </div>
-      <div className="componentradios">
+      <div className="cyclecontainer">
         <h5>Do you want to enable matrix recommendation?</h5>
+        <div className="radiobuttons">
         <label>
           <input
             type="radio"
@@ -96,10 +103,13 @@ const SplitandMatrix = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
           />
           No
         </label>
+        </div>
       </div>
 
-      <div className="componentradios">
+      <div className="cyclecontainer">
         <h5>What is the calculation of matrix recommendations:</h5>
+
+        <div className="radiobuttons">
         <label>
           <input
             type="radio"
@@ -119,12 +129,13 @@ const SplitandMatrix = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
           Highest
         </label>
       </div>
+</div>
 
       <div className="button-container">
-        {currentStep > 0 && <button onClick={onBack}>Back</button>}
-        <button onClick={handleContinue}>Continue</button>
+        {currentStep > 0 && <button onClick={onBack} className="back_button">Back</button>}
+        <button onClick={handleContinue} className="continue_button">Continue</button>
       </div>
-    </div>
+</div>
   );
 };
 
