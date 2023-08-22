@@ -1,5 +1,6 @@
 import  { useState } from 'react';
 import "./Timebase.css"
+import TopNav from '../../../layout/TopNav/TopNav';
 const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased }) => {
   const [formData, setFormData] = useState({
     bonusProgram: '',
@@ -44,6 +45,7 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased }) => {
 
   return (
     <>
+       <TopNav tabActive={"plan"} activeStatus={"Bonus&Incentives"} firstStatusNumber={"9"} secondStatusNumber={"10"} thirdStatusNumber={"11"} firstStatus={"Bonus&Incentives"} secondStatus={"Bonus&IncentivesScheme"} thirdStatus ={"Review"}/>
       <div className="cyclewrapper">
     
     <div className="cycle">

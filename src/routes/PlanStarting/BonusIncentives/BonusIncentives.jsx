@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./bonusincentives.css";
+import TopNav from "../../../layout/TopNav/TopNav";
 
 const BonusIncentives = ({ onNext, onBack, currentStep , setPlandataValues }) => {
   const [enableBonusIncentives, setEnableBonusIncentives] = useState("");
@@ -20,6 +21,8 @@ const BonusIncentives = ({ onNext, onBack, currentStep , setPlandataValues }) =>
   };
 
   return (
+    <>
+       <TopNav tabActive={"plan"} activeStatus={"Promotions"} firstStatusNumber={"8"} secondStatusNumber={"9"} thirdStatusNumber={"10"} firstStatus={"Promotions"} secondStatus={"Bonus&Incentives"} thirdStatus ={"Bonus&IncentivesScheme"}/>
     <div className="cyclewrapper">
     <div className="cycle">
     <div className="heading-container">
@@ -91,6 +94,7 @@ const BonusIncentives = ({ onNext, onBack, currentStep , setPlandataValues }) =>
         <button onClick={handleContinue} className="continue_button">Continue</button>
       </div>
     </div>
+    </>
   );
 };
 

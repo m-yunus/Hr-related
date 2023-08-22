@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TopNav from "../../../layout/TopNav/TopNav";
 
 
 const SplitandMatrix = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
@@ -21,6 +22,8 @@ const SplitandMatrix = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
   };
 
   return (
+    <>
+       <TopNav tabActive={"plan"} activeStatus={"parity&Guideline"} firstStatusNumber={"4"} secondStatusNumber={"5"} thirdStatusNumber={"6"} firstStatus={"Parity&Guideline"} secondStatus={"Split&matrix"} thirdStatus ={"Paygroups"}/>
     <div className="cyclewrapper">
       <div className="heading-container">
         <h4>Split Recommendation</h4>
@@ -136,6 +139,7 @@ const SplitandMatrix = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
         <button onClick={handleContinue} className="continue_button">Continue</button>
       </div>
 </div>
+</>
   );
 };
 

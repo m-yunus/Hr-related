@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import "./performancebasedbonus.css"
+import TopNav from '../../../layout/TopNav/TopNav';
 const Performancebasedbonus = ({ onNext, onBack, currentStep,setPerformanceBased }) => {
   const [formData, setFormData] = useState({
     bonusProgram: '',
@@ -51,6 +52,7 @@ const Performancebasedbonus = ({ onNext, onBack, currentStep,setPerformanceBased
 
   return (
     <>
+     <TopNav tabActive={"plan"} activeStatus={"Bonus&Incentives"} firstStatusNumber={"9"} secondStatusNumber={"10"} thirdStatusNumber={"11"} firstStatus={"Bonus&Incentives"} secondStatus={"Bonus&IncentivesScheme"} thirdStatus ={"Review"}/>
       <div className="cyclewrapper">
         <div className="cycle">
 

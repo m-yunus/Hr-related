@@ -1,5 +1,6 @@
 import  { useState } from "react";
 import "./lumpsum.css"
+import TopNav from "../../../layout/TopNav/TopNav";
 
 const Lumpsumcorrection = ({ onNext, onBack, currentStep ,setPlandataValues }) => {
   const [belowRangePreference, setBelowRangePreference] = useState("");
@@ -18,6 +19,8 @@ const Lumpsumcorrection = ({ onNext, onBack, currentStep ,setPlandataValues }) =
   };
 
   return (
+    <>
+       <TopNav tabActive={"plan"} activeStatus={"Paygroups"} firstStatusNumber={"6"} secondStatusNumber={"7"} thirdStatusNumber={"8"} firstStatus={"Paygroups"} secondStatus={"LumpSum&Corrections"} thirdStatus ={"Promotions"}/>
     <div className="cyclewrapper">
     <div className="cycle">
     <div className="heading-container">
@@ -101,6 +104,7 @@ const Lumpsumcorrection = ({ onNext, onBack, currentStep ,setPlandataValues }) =
         <button onClick={handleContinue} className="continue_button">Continue</button>
       </div>
     </div>
+    </>
   );
 };
 

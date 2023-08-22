@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./paygroups.css";
+import TopNav from "../../../layout/TopNav/TopNav";
 
 const PayGroups = ({ onNext, onBack, currentStep , setPlandataValues}) => {
   const [applyDifferentMeritRules, setApplyDifferentMeritRules] = useState("");
@@ -17,6 +18,8 @@ const PayGroups = ({ onNext, onBack, currentStep , setPlandataValues}) => {
   };
 
   return (
+    <>
+       <TopNav tabActive={"plan"} activeStatus={"Split&Matrix"} firstStatusNumber={"5"} secondStatusNumber={"6"} thirdStatusNumber={"7"} firstStatus={"Split&Matrix"} secondStatus={"Paygroups"} thirdStatus ={"LumpSum&Corrections"}/>
     <div className="cyclewrapper">
     <div className="cycle">
     <div className="heading-container">
@@ -65,6 +68,7 @@ const PayGroups = ({ onNext, onBack, currentStep , setPlandataValues}) => {
         <button onClick={handleContinue} className="continue_button">Continue</button>
       </div>
       </div>
+      </>
   );
 };
 

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import  { useState } from "react";
+
 import "./parityguideline.css";
+import TopNav from "../../../layout/TopNav/TopNav";
 
 const ParityGuideline = ({ onNext, onBack, currentStep,setPlandataValues }) => {
   const [preferredParityUnit, setPreferredParityUnit] = useState("");
@@ -22,6 +23,7 @@ const ParityGuideline = ({ onNext, onBack, currentStep,setPlandataValues }) => {
 
   return (
     <>
+   <TopNav tabActive={"plan"} activeStatus={"Prorations"} firstStatusNumber={"3"} secondStatusNumber={"4"} thirdStatusNumber={"5"} firstStatus={"Prorations"} secondStatus={"Parity&Guideline"} thirdStatus ={"Split&matrix"}/>
      <div className="cyclewrapper">
     <div className="cycle">
       <div className="heading-container">

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Prorations.css";
+import TopNav from "../../../layout/TopNav/TopNav";
 
 const Proration = ({ onNext, onBack, currentStep,setPlandataValues }) => {
   const [prorateIncrement, setProrateIncrement] = useState("");
@@ -24,6 +25,7 @@ const Proration = ({ onNext, onBack, currentStep,setPlandataValues }) => {
 
   return (
     <>
+       <TopNav tabActive={"plan"} activeStatus={"Component&Currency"} firstStatusNumber={"2"} secondStatusNumber={"3"} thirdStatusNumber={"4"} firstStatus={"Component&Currency"} secondStatus={"Prorations"} thirdStatus ={"Parity&Guideline"}/>
      <div className="cyclewrapper">
     <div className="cycle">
       <div className="heading-container">

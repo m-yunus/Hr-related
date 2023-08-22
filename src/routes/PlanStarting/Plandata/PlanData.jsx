@@ -11,6 +11,9 @@ import CycleEligibility from '../Userplan/PlanData/cycleEligibility/CycleEligibi
 import PayGroups from '../paygroups/PayGroups';
 import Time_based_bonus from '../Time_based_Bonus/Time_based_bonus';
 import Performancebasedbonus from '../PerformanceBasedBonus/Performancebasedbonus';
+import Review from '../Review/Review';
+import DataUpload from '../DataUpload/DataUpload';
+import MeritBonusgroup from '../Merit&BonusGroup/MeritBonusgroup';
 
 const PlanData = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -140,7 +143,19 @@ console.log(Data,timeBased,performanceBased);
           case 10:
           return (
             <Performancebasedbonus onNext={handleNext} onBack={handleBack} currentStep={currentStep} setPerformanceBased={setPerformanceBased}/>
-          )
+          );
+          case 11:
+            return (
+              <Review onNext={handleNext} onBack={handleBack} currentStep={currentStep} setPerformanceBased={setPerformanceBased}/>
+            )
+            case 12:
+            return (
+              <DataUpload onNext={handleNext} onBack={handleBack} currentStep={currentStep} setPerformanceBased={setPerformanceBased}/>
+            )
+            case 13:
+              return (
+                <MeritBonusgroup onNext={handleNext} onBack={handleBack} currentStep={currentStep} setPerformanceBased={setPerformanceBased}/>
+              )
       default:
         return null;
     }

@@ -78,3 +78,17 @@ label{
     display: flex;
     gap: 1.3rem;
 }
+.datacontainer{
+    display: flex;
+    align-items: center;
+    /* gap: 2rem; */
+    justify-content: space-around;
+    padding: 20px;
+}
+.datacontainer button{
+    padding: 10px;
+    background: white;
+    color: #1877d2;
+    border-radius: 50px;
+    border: 1px solid #1877d2;
+}

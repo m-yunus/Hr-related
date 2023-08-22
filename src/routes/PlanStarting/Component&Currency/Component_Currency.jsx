@@ -1,6 +1,7 @@
 import  { useState } from "react";
 import "./componentcurrency.css";
 import { AiFillPlusSquare } from "react-icons/ai";
+import TopNav from "../../../layout/TopNav/TopNav";
 
 const Component_Currency = ({ onNext, onBack, currentStep,setPlandataValues }) => {
   const [useSalaryComponents, setUseSalaryComponents] = useState("");
@@ -29,6 +30,7 @@ const Component_Currency = ({ onNext, onBack, currentStep,setPlandataValues }) =
 console.log(useSalaryComponents,componentName,displayName,useGlobalCurrency);
   return (
     <>
+     <TopNav tabActive={"plan"} activeStatus={"Cycle&Eligibility"} firstStatusNumber={"1"} secondStatusNumber={"2"} thirdStatusNumber={"3"} firstStatus={"Cycle&Eligibility"} secondStatus={"Component&Currency"} thirdStatus ={"Prorations"}/>
     <div className="cyclewrapper">
     <div className="cycle">
    

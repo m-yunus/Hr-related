@@ -1,6 +1,6 @@
 import  { useState } from "react";
 import "./cycleEligibility.css";
-
+import TopNav from "../../../../../layout/TopNav/TopNav"
 const CycleEligibility = ({ onNext, onBack, currentStep, setPlandataValues }) => {
   // State variables for selected values
   const [cycleFrequency, setCycleFrequency] = useState("yearly");
@@ -27,6 +27,7 @@ setPlandataValues((prevdata)=>({
   console.log(cycleFrequency,startDate,endDate,eligibilityOption);
   return (
     <>
+    <TopNav tabActive={"plan"} activeStatus={"Home"} firstStatusNumber={"0"} secondStatusNumber={"1"} thirdStatusNumber={"2"} firstStatus={"Home"} secondStatus={"Cycle&Eligibility"} thirdStatus ={"Component&Currency"}/>
       {/* Radio buttons for cycle frequency */}
       <div className="cyclewrapper">
         <div className="cycle">

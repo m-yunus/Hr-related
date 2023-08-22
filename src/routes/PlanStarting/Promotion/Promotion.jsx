@@ -1,5 +1,6 @@
 import  { useState } from "react";
 import "./promotion.css";
+import TopNav from "../../../layout/TopNav/TopNav";
 
 const Promotion = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
   const [enablePromotionRecommendations, setEnablePromotionRecommendations] = useState("");
@@ -17,6 +18,8 @@ const Promotion = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
   };
 
   return (
+    <>
+       <TopNav tabActive={"plan"} activeStatus={"Lumpsum&Corrections"} firstStatusNumber={"7"} secondStatusNumber={"8"} thirdStatusNumber={"9"} firstStatus={"Lumpsum&Corrections"} secondStatus={"Promotions"} thirdStatus ={"Bonus&Incentives"}/>
     <div className="cyclewrapper">
     <div className="cycle">
     <div className="heading-container">
@@ -52,6 +55,7 @@ const Promotion = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
         <button onClick={handleContinue} className="continue_button">Continue</button>
       </div>
     </div>
+    </>
   );
 };
 
