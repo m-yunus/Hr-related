@@ -73,19 +73,19 @@ const [timeBased,setTimeBased]=useState({
 })
 const [performanceBased,setPerformanceBased]=useState({
   name:"",
-  eligibility_data:"",
-  bonus_based_on_salary:"",
-  bonus_percentage:"",
-  performance_rating:"",
+  eligibility_data:{},
+  bonus_based_on_salary:false,
+  bonus_percentage:0,
+  performance_rating:false,
   name_of_bonus_factor:"",
-  bonus_table:"",
-  bonus_multiplier:"",
-  org_bonus_multiplier:"",
-  team_score:"",
-  manager_recommendation:"",
-  manager_recommendation_percentage:"",
-  bonus_guideline_percentage:"",
-  pro_rate_bonus:"",
+  bonus_table:[],
+  bonus_multiplier:false,
+  org_bonus_multiplier:0,
+  team_score:0,
+  manager_recommendation:false,
+  manager_recommendation_percentage:0,
+  bonus_guideline_percentage:0,
+  pro_rate_bonus:false,
   pro_rate_bonus_unit:""
 })
 const handleNext = () => {
@@ -142,7 +142,7 @@ console.log(Data,timeBased,performanceBased);
           );
           case 10:
           return (
-            <Performancebasedbonus onNext={handleNext} onBack={handleBack} currentStep={currentStep} setPerformanceBased={setPerformanceBased}/>
+            <Performancebasedbonus onNext={handleNext} onBack={handleBack} currentStep={currentStep} performanceBased={performanceBased} setPerformanceBased={setPerformanceBased}/>
           );
           case 11:
             return (

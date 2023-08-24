@@ -10,7 +10,7 @@ const Review = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
   }
   return (
     <>
-     <TopNav tabActive={"plan"} activeStatus={"Bonus&Incentives"} firstStatusNumber={"9"} secondStatusNumber={"10"} thirdStatusNumber={"11"} firstStatus={"Bonus&Incentives"} secondStatus={"Bonus&IncentivesScheme"} thirdStatus ={"Review"}/>
+     <TopNav tabActive={"plan"} activeStatus={"Bonus&IncentivesSchemes"} firstStatusNumber={"10"} secondStatusNumber={"11"} thirdStatusNumber={"12"} firstStatus={"Bonus&IncentivesSchemes"} secondStatus={"Review"} thirdStatus ={"Dataupload"}/>
      <div className="cyclewrapper">
         <div className="cycle">
           <div className="headerplan">

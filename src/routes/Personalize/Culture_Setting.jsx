@@ -5,16 +5,20 @@ import SuccessModal from "../../components/Loginsuccess/SuccessModal";
 import Error from "../../components/Error/Error";
 
 const Culture_Setting = () => {
-  const [ipCountry, setIpCountry] = useState("");
+  const [ipCountry, setIpCountry] = useState({});
   const [countries, setCountries] = useState([]);
-  const [selectedCountryData, setSelectedCountryData] = useState({});
+  const [selectedCountryData, setSelectedCountryData] = useState({
+
+  });
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIserror] = useState(false);
   const [errorStatus, seterrorStatus] = useState("");
   useEffect(() => {
-    axios.get(`${BaseUrl}/api/user/getIP`).then((res) => {
+    axios.get("https://hr-project.onrender.com/api/user/getIP").then((res) => {
       const countryName = res.data;
-      setIpCountry(countryName);
+     console.log(res);
+      setIpCountry(countryName?.country_name);
+
     });
 
     axios.get(`${BaseUrl}/api/country-settings`).then((res) => {
@@ -22,14 +26,19 @@ const Culture_Setting = () => {
       setCountries(countrySettings);
     });
   }, []);
-
+console.log(ipCountry);
   useEffect(() => {
     const foundCountryData = countries.find(
-      (country) => country.country === ipCountry
+      (country) => country?.country === ipCountry
     );
-    setSelectedCountryData(foundCountryData || {});
+    console.log(foundCountryData);
+    setSelectedCountryData({
+      number: foundCountryData?.number || "",
+      currency: foundCountryData?.currency || "",
+      date_format: foundCountryData?.date_format || "",
+    });
   }, [ipCountry, countries]);
-
+console.log(selectedCountryData);
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = {
@@ -102,7 +111,7 @@ const Culture_Setting = () => {
                 <select
                   name="country"
                   className="countrySelection"
-                  value={ipCountry}
+                  value={ipCountry.country_name}
                   onChange={(event) => setIpCountry(event.target.value)}
                 >
                   {countries.map((country) => (
