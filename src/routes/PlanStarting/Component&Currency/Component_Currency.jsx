@@ -4,12 +4,12 @@ import { AiFillPlusSquare } from "react-icons/ai";
 import TopNav from "../../../layout/TopNav/TopNav";
 
 const Component_Currency = ({ onNext, onBack, currentStep,setPlandataValues }) => {
-  const [useSalaryComponents, setUseSalaryComponents] = useState(true);
+  const [useSalaryComponents, setUseSalaryComponents] = useState(false);
   const [componentName, setComponentName] = useState("");
   const [displayName, setDisplayName] = useState("");
-  const [useGlobalCurrency, setUseGlobalCurrency] = useState("yes");
+  const [useGlobalCurrency, setUseGlobalCurrency] = useState(false);
 
-
+console.log(useSalaryComponents,useGlobalCurrency);
   const handleContinue = () => {
   
 
@@ -45,18 +45,18 @@ console.log(useSalaryComponents,componentName,displayName,useGlobalCurrency);
         <label>
           <input
             type="radio"
-            value="yes"
-            checked={useSalaryComponents === "yes"}
-            onChange={(e) => setUseSalaryComponents(e.target.value)}
+            value="true"
+            checked={useSalaryComponents }
+            onChange={() => setUseSalaryComponents(true)}
           />
           Yes
         </label>
         <label>
           <input
             type="radio"
-            value="no"
-            checked={useSalaryComponents === "no"}
-            onChange={(e) => setUseSalaryComponents(e.target.value)}
+            value="false"
+            checked={!useSalaryComponents }
+            onChange={() => setUseSalaryComponents(false)}
           />
           No
         </label>
@@ -95,18 +95,18 @@ console.log(useSalaryComponents,componentName,displayName,useGlobalCurrency);
          <label>
           <input
             type="radio"
-            value="yes"
-            checked={useGlobalCurrency === "yes"}
-            onChange={(e) => setUseGlobalCurrency(e.target.value)}
+            value="true"
+            checked={useGlobalCurrency}
+            onChange={() => setUseGlobalCurrency(true)}
           />
           Yes
         </label>
         <label>
           <input
             type="radio"
-            value="no"
-            checked={useGlobalCurrency === "no"}
-            onChange={(e) => setUseGlobalCurrency(e.target.value)}
+            value="false"
+            checked={!useGlobalCurrency}
+            onChange={() => setUseGlobalCurrency(false)}
           />
           No
         </label>

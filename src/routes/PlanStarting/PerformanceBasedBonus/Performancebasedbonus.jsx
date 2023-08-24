@@ -4,9 +4,9 @@ import TopNav from '../../../layout/TopNav/TopNav';
 const Performancebasedbonus = ({ onNext, onBack, currentStep,setPerformanceBased }) => {
   const [formData, setFormData] = useState({
     bonusProgram: '',
-    eligibilityDate: '',
-    bonusBasedOnSalary: '',
-    bonusPercentage: '',
+    eligibilityDate: {},
+    bonusBasedOnSalary: false,
+    bonusPercentage: 0,
     bonusBasedOnPerformance: '',
     bonusFactorName: '',
     useBonusMultiplier: ['', '', ''],

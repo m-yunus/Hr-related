@@ -3,7 +3,7 @@ import "./promotion.css";
 import TopNav from "../../../layout/TopNav/TopNav";
 
 const Promotion = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
-  const [enablePromotionRecommendations, setEnablePromotionRecommendations] = useState("yes");
+  const [enablePromotionRecommendations, setEnablePromotionRecommendations] = useState(false);
 
   const handleContinue = () => {
   
@@ -31,18 +31,18 @@ const Promotion = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
         <label>
           <input
             type="radio"
-            value="yes"
-            checked={enablePromotionRecommendations === "yes"}
-            onChange={() => setEnablePromotionRecommendations("yes")}
+            value="true"
+            checked={enablePromotionRecommendations }
+            onChange={() => setEnablePromotionRecommendations(true)}
           />
           Yes
         </label>
         <label>
           <input
             type="radio"
-            value="no"
-            checked={enablePromotionRecommendations === "no"}
-            onChange={() => setEnablePromotionRecommendations("no")}
+            value="false"
+            checked={!enablePromotionRecommendations }
+            onChange={() => setEnablePromotionRecommendations(false)}
           />
           No
         </label>

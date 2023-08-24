@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./cycleEligibility.css";
 import TopNav from "../../../../../layout/TopNav/TopNav";
 

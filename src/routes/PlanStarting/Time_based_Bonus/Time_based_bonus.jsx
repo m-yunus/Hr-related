@@ -1,16 +1,18 @@
 import  { useState } from 'react';
 import "./Timebase.css"
 import TopNav from '../../../layout/TopNav/TopNav';
-const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased }) => {
+import axios from 'axios';
+import { BaseUrl } from '../../../ApiService/ApiService';
+const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased,timeBased }) => {
   const [formData, setFormData] = useState({
     bonusProgram: '',
-    eligibilityDate: '',
-    bonusBasedOnSalary: '',
-    bonusPercentage: '',
-    allowManagerRecommendation: '',
-    managerRecommendation: '',
-    bonusGuidelinePercentage: '',
-    prorateBonus: '',
+    eligibilityDate: {},
+    bonusBasedOnSalary: false,
+    bonusPercentage: 0,
+    allowManagerRecommendation: false,
+    managerRecommendation: 0,
+    bonusGuidelinePercentage: 0,
+    prorateBonus: false,
     preferredProrateUnit: '',
   });
 
@@ -23,7 +25,7 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased }) => {
     }));
   };
 
-  const handleContinue = () => {
+  const handleContinue = async () => {
     // Move to the next step
     onNext();
     setTimeBased((prevdata)=>({
@@ -39,7 +41,19 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased }) => {
       pro_rate_bonus_unit:formData.preferredProrateUnit,
     }))
     
-
+    try {
+      const headers = {
+        "x-access-token": sessionStorage.getItem("token"),
+      };
+      const res = await axios.post(
+        `${BaseUrl}/api/plan/time-based-bonus`,
+        timeBased,
+        { headers }
+      );
+      console.log("submited succesfully",res.data);
+    } catch (error) {
+      console.log("Api error",error);
+    }
 
   };
 
@@ -86,18 +100,18 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased }) => {
           <label>
             <input
               type="radio"
-              value="yes"
-              onChange={(e) => handleInputChange('bonusBasedOnSalary', e.target.value)}
-              checked={formData.bonusBasedOnSalary === 'yes'}
+              value="true"
+              onChange={() => handleInputChange('bonusBasedOnSalary',true)}
+              checked={formData.bonusBasedOnSalary }
             />
             Yes
           </label>
           <label>
             <input
               type="radio"
-              value="no"
-              onChange={(e) => handleInputChange('bonusBasedOnSalary', e.target.value)}
-              checked={formData.bonusBasedOnSalary === 'no'}
+              value="false"
+              onChange={() => handleInputChange('bonusBasedOnSalary',false)}
+              checked={!formData.bonusBasedOnSalary }
             />
             No
           </label>
@@ -109,7 +123,7 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased }) => {
           <h5>How much bonus as a percentage of salary:</h5>
           <div className="inputcontainer">
           <input
-            type="text"
+            type="number"
             value={formData.bonusPercentage}
             onChange={(e) => handleInputChange('bonusPercentage', e.target.value)}
           />
@@ -123,9 +137,9 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased }) => {
           <label>
             <input
               type="radio"
-              value="yes"
-              onChange={(e) => handleInputChange('allowManagerRecommendation', e.target.value)}
-              checked={formData.allowManagerRecommendation === 'yes'}
+              value="true"
+              onChange={() => handleInputChange('allowManagerRecommendation',true)}
+              checked={formData.allowManagerRecommendation}
             />
             Yes
           </label>
@@ -133,8 +147,8 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased }) => {
             <input
               type="radio"
               value="no"
-              onChange={(e) => handleInputChange('allowManagerRecommendation', e.target.value)}
-              checked={formData.allowManagerRecommendation === 'no'}
+              onChange={() => handleInputChange('allowManagerRecommendation', false)}
+              checked={!formData.allowManagerRecommendation }
             />
             No
           </label>
@@ -145,7 +159,7 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased }) => {
           <h5>What is the manager recommendation percentage?</h5>
           <div className="inputcontainer">
           <input
-            type="text"
+            type="number"
             value={formData.managerRecommendation}
             onChange={(e) => handleInputChange('managerRecommendation', e.target.value)}
           />
@@ -156,7 +170,7 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased }) => {
           <h5>What is the bonus guideline percentage?</h5>
           <div className="inputcontainer">
           <input
-            type="text"
+            type="number"
             value={formData.bonusGuidelinePercentage}
             onChange={(e) => handleInputChange('bonusGuidelinePercentage', e.target.value)}
           />
@@ -170,18 +184,18 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased }) => {
           <label>
             <input
               type="radio"
-              value="yes"
-              onChange={(e) => handleInputChange('prorateBonus', e.target.value)}
-              checked={formData.prorateBonus === 'yes'}
+              value="true"
+              onChange={() => handleInputChange('prorateBonus', true)}
+              checked={formData.prorateBonus }
             />
             Yes
           </label>
           <label>
             <input
               type="radio"
-              value="no"
-              onChange={(e) => handleInputChange('prorateBonus', e.target.value)}
-              checked={formData.prorateBonus === 'no'}
+              value="false"
+              onChange={() => handleInputChange('prorateBonus', false)}
+              checked={!formData.prorateBonus}
             />
             No
           </label>

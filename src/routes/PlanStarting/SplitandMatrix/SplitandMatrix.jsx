@@ -3,9 +3,9 @@ import TopNav from "../../../layout/TopNav/TopNav";
 
 
 const SplitandMatrix = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
-  const [enableSplitRecommendation, setEnableSplitRecommendation] = useState("yes");
+  const [enableSplitRecommendation, setEnableSplitRecommendation] = useState(false);
   const [splitRecommendationCalculation, setSplitRecommendationCalculation] = useState("Average");
-  const [enableMatrixRecommendation, setEnableMatrixRecommendation] = useState("no");
+  const [enableMatrixRecommendation, setEnableMatrixRecommendation] = useState(false);
   const [matrixRecommendationCalculation, setMatrixRecommendationCalculation] = useState("Highest");
 
   const handleContinue = () => {
@@ -36,18 +36,20 @@ const SplitandMatrix = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
         <label>
           <input
             type="radio"
-            value="yes"
-            checked={enableSplitRecommendation === "yes"}
-            onChange={() => setEnableSplitRecommendation("yes")}
+          
+            value="true"
+            checked={enableSplitRecommendation }
+            onChange={() => setEnableSplitRecommendation(true)}
           />
           Yes
         </label>
         <label>
           <input
             type="radio"
-            value="no"
-            checked={enableSplitRecommendation === "no"}
-            onChange={() => setEnableSplitRecommendation("no")}
+          
+            value="false"
+            checked={!enableSplitRecommendation}
+            onChange={() => setEnableSplitRecommendation(false)}
           />
           No
         </label>
@@ -91,18 +93,18 @@ const SplitandMatrix = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
         <label>
           <input
             type="radio"
-            value="yes"
-            checked={enableMatrixRecommendation === "yes"}
-            onChange={() => setEnableMatrixRecommendation("yes")}
+            value="true"
+            checked={enableMatrixRecommendation }
+            onChange={() => setEnableMatrixRecommendation(true)}
           />
           Yes
         </label>
         <label>
           <input
             type="radio"
-            value="no"
-            checked={enableMatrixRecommendation === "no"}
-            onChange={() => setEnableMatrixRecommendation("no")}
+            value="false"
+            checked={!enableMatrixRecommendation }
+            onChange={() => setEnableMatrixRecommendation(false)}
           />
           No
         </label>

@@ -3,10 +3,10 @@ import "./Prorations.css";
 import TopNav from "../../../layout/TopNav/TopNav";
 
 const Proration = ({ onNext, onBack, currentStep,setPlandataValues }) => {
-  const [prorateIncrement, setProrateIncrement] = useState("yes");
+  const [prorateIncrement, setProrateIncrement] = useState(false);
   const [prorateIncrementUnit, setProrateIncrementUnit] = useState("Hourly");
-  const [prorateOffCycle, setProrateOffCycle] = useState("yes");
-  const [prorateOffCycleUnit, setProrateOffCycleUnit] = useState("Weekly");
+  const [prorateOffCycle, setProrateOffCycle] = useState(false);
+  const [prorateOffCycleUnit, setProrateOffCycleUnit] = useState("Monthly");
 
   const handleContinue = () => {
  
@@ -39,18 +39,18 @@ const Proration = ({ onNext, onBack, currentStep,setPlandataValues }) => {
         <label>
           <input
             type="radio"
-            value="yes"
-            checked={prorateIncrement === "yes"}
-            onChange={(e) => setProrateIncrement(e.target.value)}
+            value="true"
+            checked={prorateIncrement }
+            onChange={() => setProrateIncrement(true)}
           />
           Yes
         </label>
         <label>
           <input
             type="radio"
-            value="no"
-            checked={prorateIncrement === "no"}
-            onChange={(e) => setProrateIncrement(e.target.value)}
+            value="false"
+            checked={!prorateIncrement}
+            onChange={() => setProrateIncrement(false)}
           />
           No
         </label>
@@ -110,18 +110,18 @@ const Proration = ({ onNext, onBack, currentStep,setPlandataValues }) => {
         <label>
           <input
             type="radio"
-            value="yes"
-            checked={prorateOffCycle === "yes"}
-            onChange={(e) => setProrateOffCycle(e.target.value)}
+            value="true"
+            checked={prorateOffCycle }
+            onChange={() => setProrateOffCycle(true)}
           />
           Yes
         </label>
         <label>
           <input
             type="radio"
-            value="no"
-            checked={prorateOffCycle === "no"}
-            onChange={(e) => setProrateOffCycle(e.target.value)}
+            value="false"
+            checked={!prorateOffCycle }
+            onChange={() => setProrateOffCycle(false)}
           />
           No
         </label>

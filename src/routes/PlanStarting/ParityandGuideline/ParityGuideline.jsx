@@ -5,7 +5,7 @@ import TopNav from "../../../layout/TopNav/TopNav";
 
 const ParityGuideline = ({ onNext, onBack, currentStep,setPlandataValues }) => {
   const [preferredParityUnit, setPreferredParityUnit] = useState("Compa-ratio");
-  const [enableMeritGuidelines, setEnableMeritGuidelines] = useState("yes");
+  const [enableMeritGuidelines, setEnableMeritGuidelines] = useState(false);
   const [supervisorRecommendationValidation, setSupervisorRecommendationValidation] = useState("yes");
 
   const handleContinue = () => {
@@ -102,18 +102,18 @@ const ParityGuideline = ({ onNext, onBack, currentStep,setPlandataValues }) => {
        <label>
           <input
             type="radio"
-            value="yes"
-            checked={enableMeritGuidelines === "yes"}
-            onChange={() => setEnableMeritGuidelines("yes")}
+            value="true"
+            checked={enableMeritGuidelines}
+            onChange={() => setEnableMeritGuidelines(true)}
           />
           Yes
         </label>
         <label>
           <input
             type="radio"
-            value="no"
-            checked={enableMeritGuidelines === "no"}
-            onChange={() => setEnableMeritGuidelines("no")}
+            value="false"
+            checked={!enableMeritGuidelines }
+            onChange={() => setEnableMeritGuidelines(false)}
           />
           No
         </label>

@@ -3,7 +3,7 @@ import "./paygroups.css";
 import TopNav from "../../../layout/TopNav/TopNav";
 
 const PayGroups = ({ onNext, onBack, currentStep , setPlandataValues}) => {
-  const [applyDifferentMeritRules, setApplyDifferentMeritRules] = useState("yes");
+  const [applyDifferentMeritRules, setApplyDifferentMeritRules] = useState(false);
   const [payGroupBasis, setPayGroupBasis] = useState("");
 
   const handleContinue = () => {
@@ -31,18 +31,18 @@ const PayGroups = ({ onNext, onBack, currentStep , setPlandataValues}) => {
         <label>
           <input
             type="radio"
-            value="yes"
-            checked={applyDifferentMeritRules === "yes"}
-            onChange={() => setApplyDifferentMeritRules("yes")}
+            value="true"
+            checked={applyDifferentMeritRules }
+            onChange={() => setApplyDifferentMeritRules(true)}
           />
           Yes
         </label>
         <label>
           <input
             type="radio"
-            value="no"
-            checked={applyDifferentMeritRules === "no"}
-            onChange={() => setApplyDifferentMeritRules("no")}
+            value="false"
+            checked={!applyDifferentMeritRules }
+            onChange={() => setApplyDifferentMeritRules(false)}
           />
           No
         </label>
