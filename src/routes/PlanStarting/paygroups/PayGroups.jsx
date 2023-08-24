@@ -3,7 +3,7 @@ import "./paygroups.css";
 import TopNav from "../../../layout/TopNav/TopNav";
 
 const PayGroups = ({ onNext, onBack, currentStep , setPlandataValues}) => {
-  const [applyDifferentMeritRules, setApplyDifferentMeritRules] = useState("");
+  const [applyDifferentMeritRules, setApplyDifferentMeritRules] = useState("yes");
   const [payGroupBasis, setPayGroupBasis] = useState("");
 
   const handleContinue = () => {

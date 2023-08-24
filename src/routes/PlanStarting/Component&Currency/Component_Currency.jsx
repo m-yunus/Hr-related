@@ -4,10 +4,10 @@ import { AiFillPlusSquare } from "react-icons/ai";
 import TopNav from "../../../layout/TopNav/TopNav";
 
 const Component_Currency = ({ onNext, onBack, currentStep,setPlandataValues }) => {
-  const [useSalaryComponents, setUseSalaryComponents] = useState("");
+  const [useSalaryComponents, setUseSalaryComponents] = useState(true);
   const [componentName, setComponentName] = useState("");
   const [displayName, setDisplayName] = useState("");
-  const [useGlobalCurrency, setUseGlobalCurrency] = useState("");
+  const [useGlobalCurrency, setUseGlobalCurrency] = useState("yes");
 
 
   const handleContinue = () => {
@@ -80,7 +80,7 @@ console.log(useSalaryComponents,componentName,displayName,useGlobalCurrency);
           value={displayName}
           onChange={(e) => setDisplayName(e.target.value)}
         />
-        <button className="continue_button"><AiFillPlusSquare/></button>
+      
       </div>
        
       </div>

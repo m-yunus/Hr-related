@@ -7,6 +7,7 @@ import { BaseUrl } from "../ApiService/ApiService";
 import "./login.css"
 import SuccessModal from "./Loginsuccess/SuccessModal";
 import Error from "./Error/Error";
+import { useDataContext } from "../Context/Context";
 const LoginForm = () => {
   const [loginData, setLoginData] = useState({
     username: '',
@@ -16,6 +17,7 @@ const LoginForm = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError,setIserror]=useState(false);
   const[errorStatus,seterrorStatus]=useState("");
+ 
   const Loginurl=`${BaseUrl}/api/user/login`
 
   const navigate=useNavigate();
@@ -38,15 +40,17 @@ const LoginForm = () => {
       .then((response) => {
         if (response.status === 200) {
           console.log(response.config.data);
+          
           const token = response.data.token; 
           sessionStorage.setItem('token', token);
+          localStorage.setItem('userName',loginData.username);
           setIsSuccess(true)
           if (!isSuccess){
             setTimeout(()=>{
               setIsSuccess(false)
              
             },3000)
-            navigate('/personalize');
+            navigate('/userplan');
           }
    
             

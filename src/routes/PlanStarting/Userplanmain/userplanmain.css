@@ -1,9 +1,77 @@
 
 
 .content-plan{
-    height: 600px;
-    width: 100vw;
+height: 100%;
+    width: 70%;
+    margin: 3.5rem;
+    
     display: flex;
     justify-content: center;
+    align-items: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.timer-wrapper{
+    width: 30%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    height: 100%;
+    
+}
+.landing-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+    padding: 4rem;
+ 
+}
+.heading-userplan{
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+
+}
+.country-section{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid grey;
+}
+
+.tat-timer{
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    border-bottom: 1px solid grey;
+}
+.tat-days{
+    width: 40%;
+
+}
+.countdown{
+    width: 60%;
+}
+.countdownlist{
+    display: flex;
+    gap: 1rem;
+}
+.countdownlist li{
+    display: flex;
+    flex-direction: column;
+    background-color: #1877d2;
+  padding: 0.7rem;
+  color: white;
+  border-radius: 10px;
+}
+.beginhere{
+    background: #1877d2;
+    color: white;
+    padding: 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    width: 14rem;
+    justify-content: space-around;
     align-items: center;
 }

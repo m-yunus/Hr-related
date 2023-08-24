@@ -3,10 +3,10 @@ import TopNav from "../../../layout/TopNav/TopNav";
 
 
 const SplitandMatrix = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
-  const [enableSplitRecommendation, setEnableSplitRecommendation] = useState("");
-  const [splitRecommendationCalculation, setSplitRecommendationCalculation] = useState("");
-  const [enableMatrixRecommendation, setEnableMatrixRecommendation] = useState("");
-  const [matrixRecommendationCalculation, setMatrixRecommendationCalculation] = useState("");
+  const [enableSplitRecommendation, setEnableSplitRecommendation] = useState("yes");
+  const [splitRecommendationCalculation, setSplitRecommendationCalculation] = useState("Average");
+  const [enableMatrixRecommendation, setEnableMatrixRecommendation] = useState("no");
+  const [matrixRecommendationCalculation, setMatrixRecommendationCalculation] = useState("Highest");
 
   const handleContinue = () => {
     setPlandataValues((prevdata)=>({

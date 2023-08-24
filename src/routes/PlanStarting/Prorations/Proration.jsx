@@ -3,10 +3,10 @@ import "./Prorations.css";
 import TopNav from "../../../layout/TopNav/TopNav";
 
 const Proration = ({ onNext, onBack, currentStep,setPlandataValues }) => {
-  const [prorateIncrement, setProrateIncrement] = useState("");
-  const [prorateIncrementUnit, setProrateIncrementUnit] = useState("");
-  const [prorateOffCycle, setProrateOffCycle] = useState("");
-  const [prorateOffCycleUnit, setProrateOffCycleUnit] = useState("");
+  const [prorateIncrement, setProrateIncrement] = useState("yes");
+  const [prorateIncrementUnit, setProrateIncrementUnit] = useState("Hourly");
+  const [prorateOffCycle, setProrateOffCycle] = useState("yes");
+  const [prorateOffCycleUnit, setProrateOffCycleUnit] = useState("Weekly");
 
   const handleContinue = () => {
  
@@ -69,7 +69,33 @@ const Proration = ({ onNext, onBack, currentStep,setPlandataValues }) => {
           />
           Monthly
         </label>
-        {/* ... Repeat for other pro-ration units */}
+        <label>
+            <input
+              type="radio"
+              value="Weekly"
+              checked={prorateIncrementUnit === "Weekly"}
+              onChange={(e) => setProrateIncrementUnit(e.target.value)}
+            />
+            Weekly
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="Daily"
+              checked={prorateIncrementUnit === "Daily"}
+              onChange={(e) => setProrateIncrementUnit(e.target.value)}
+            />
+            Daily
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="Hourly"
+              checked={prorateIncrementUnit === "Hourly"}
+              onChange={(e) => setProrateIncrementUnit(e.target.value)}
+            />
+            Hourly
+          </label>
       </div>
       </div>
       <hr />
@@ -114,7 +140,33 @@ const Proration = ({ onNext, onBack, currentStep,setPlandataValues }) => {
           />
           Monthly
         </label>
-        {/* ... Repeat for other pro-ration units */}
+        <label>
+            <input
+              type="radio"
+              value="Weekly"
+              checked={prorateOffCycleUnit === "Weekly"}
+              onChange={(e) => setProrateOffCycleUnit(e.target.value)}
+            />
+            Weekly
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="Daily"
+              checked={prorateOffCycleUnit === "Daily"}
+              onChange={(e) => setProrateOffCycleUnit(e.target.value)}
+            />
+            Daily
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="Hourly"
+              checked={prorateOffCycleUnit === "Hourly"}
+              onChange={(e) => setProrateOffCycleUnit(e.target.value)}
+            />
+            Hourly
+          </label>
       </div>
       </div>
       </div>

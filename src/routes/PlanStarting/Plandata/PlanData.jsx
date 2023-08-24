@@ -134,11 +134,11 @@ console.log(Data,timeBased,performanceBased);
         );
       case 8:
         return (
-          <BonusIncentives onNext={handleNext} onBack={handleBack} currentStep={currentStep} setPlandataValues={setPlandataValues}/>
+          <BonusIncentives onNext={handleNext} onBack={handleBack} currentStep={currentStep} setPlandataValues={setPlandataValues} Data={Data}/>
         );
         case 9:
           return (
-            <Time_based_bonus onNext={handleNext} onBack={handleBack} currentStep={currentStep} setTimeBased={setTimeBased}/>
+            <Time_based_bonus onNext={handleNext} onBack={handleBack} currentStep={currentStep} setTimeBased={setTimeBased} timeBased={timeBased}/>
           );
           case 10:
           return (

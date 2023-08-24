@@ -3,7 +3,7 @@ import "./promotion.css";
 import TopNav from "../../../layout/TopNav/TopNav";
 
 const Promotion = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
-  const [enablePromotionRecommendations, setEnablePromotionRecommendations] = useState("");
+  const [enablePromotionRecommendations, setEnablePromotionRecommendations] = useState("yes");
 
   const handleContinue = () => {
   

@@ -69,3 +69,9 @@ label{
     display: flex;
     gap: 16px;
 }
+.input-wrapper{
+    display: flex;
+    justify-content: space-between;
+  
+    width: 70%;
+}

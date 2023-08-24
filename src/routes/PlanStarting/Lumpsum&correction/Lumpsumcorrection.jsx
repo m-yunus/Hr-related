@@ -3,8 +3,8 @@ import "./lumpsum.css"
 import TopNav from "../../../layout/TopNav/TopNav";
 
 const Lumpsumcorrection = ({ onNext, onBack, currentStep ,setPlandataValues }) => {
-  const [belowRangePreference, setBelowRangePreference] = useState("");
-  const [aboveRangePreference, setAboveRangePreference] = useState("");
+  const [belowRangePreference, setBelowRangePreference] = useState("IgnoreRangeMax");
+  const [aboveRangePreference, setAboveRangePreference] = useState("IncrementAndCorrection");
 
   const handleContinue = () => {
     setPlandataValues((prevdata)=>({

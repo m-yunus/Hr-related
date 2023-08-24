@@ -4,9 +4,9 @@ import "./parityguideline.css";
 import TopNav from "../../../layout/TopNav/TopNav";
 
 const ParityGuideline = ({ onNext, onBack, currentStep,setPlandataValues }) => {
-  const [preferredParityUnit, setPreferredParityUnit] = useState("");
-  const [enableMeritGuidelines, setEnableMeritGuidelines] = useState("");
-  const [supervisorRecommendationValidation, setSupervisorRecommendationValidation] = useState("");
+  const [preferredParityUnit, setPreferredParityUnit] = useState("Compa-ratio");
+  const [enableMeritGuidelines, setEnableMeritGuidelines] = useState("yes");
+  const [supervisorRecommendationValidation, setSupervisorRecommendationValidation] = useState("yes");
 
   const handleContinue = () => {
    

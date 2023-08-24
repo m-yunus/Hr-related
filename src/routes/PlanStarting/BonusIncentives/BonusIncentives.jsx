@@ -1,20 +1,34 @@
 import { useState } from "react";
 import "./bonusincentives.css";
 import TopNav from "../../../layout/TopNav/TopNav";
+import axios from "axios";
+import { BaseUrl } from "../../../ApiService/ApiService";
 
-const BonusIncentives = ({ onNext, onBack, currentStep , setPlandataValues }) => {
-  const [enableBonusIncentives, setEnableBonusIncentives] = useState("");
-  const [useDifferentRules, setUseDifferentRules] = useState("");
+const BonusIncentives = ({ onNext, onBack, currentStep , setPlandataValues,Data }) => {
+  const [enableBonusIncentives, setEnableBonusIncentives] = useState("yes");
+  const [useDifferentRules, setUseDifferentRules] = useState("no");
   const [bonusGroupBasis, setBonusGroupBasis] = useState("");
 
-  const handleContinue = () => {
+  const handleContinue =async () => {
     setPlandataValues((prevdata)=>({
       ...prevdata,
       enable_bonus_incentives:enableBonusIncentives,
       use_diff_bonus_incentives:useDifferentRules,
       basis_of_bonus:bonusGroupBasis,
     }))
-
+try {
+  const headers = {
+    "x-access-token": sessionStorage.getItem("token"),
+  };
+  const res = await axios.post(
+    `${BaseUrl}/api/plan`,
+    Data,
+    { headers }
+  );
+  console.log("submited succesfully",res.data);
+} catch (error) {
+  console.log("Api error",error);
+}
     // You can pass the bonusIncentivesData to the parent component or perform necessary actions here
 
     onNext();
