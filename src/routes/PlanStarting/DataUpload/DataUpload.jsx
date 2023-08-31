@@ -1,26 +1,73 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import TopNav from "../../../layout/TopNav/TopNav";
 import "./DataUpload.css";
+import { BaseUrl } from "../../../ApiService/ApiService";
+import axios from "axios";
 
 const DataUpload = ({ onNext, onBack, currentStep }) => {
   const fileInputRef = useRef(null);
+  const [uploadedFile, setUploadedFile] = useState(null); // State to hold the uploaded file
 
   const handleContinue = () => {
     onNext();
-  };
-
-  const handleUploadButtonClick = () => {
-    // Trigger the hidden file input when the button is clicked
-    fileInputRef.current.click();
   };
 
   const handleUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
       // Logic for handling the upload functionality
-      // For example: sendFileToServer(file);
+      setUploadedFile(file); // Save the uploaded file to state
+    }
+
+  };
+  console.log(uploadedFile);
+  const handleDownload = async () => {
+    try {
+      const headers = {
+        "x-access-token": sessionStorage.getItem("token"),
+      };
+      const res = await axios.get(`${BaseUrl}/api/plan/template-file`, {
+        headers,
+        responseType: "blob", // Specify the response type as blob
+      });
+
+      // Create a URL for the blob and initiate download
+      const blobURL = window.URL.createObjectURL(new Blob([res.data]));
+      const link = document.createElement("a");
+      link.href = blobURL;
+      link.setAttribute("download", "template.xlsx"); // Set the desired file name
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link);
+    } catch (error) {
+      console.log("Api error", error);
     }
   };
+const handleSubmit=async(event)=>{
+  event.preventDefault();
+  const headers = {
+    "x-access-token": sessionStorage.getItem("token"),
+  };
+  const formData = new FormData();
+ 
+  formData.append("company_signature", uploadedFile);
+
+  try {
+    const response = await axios.post(
+      `${BaseUrl}/api/plan/template-file`,
+      formData,
+      { headers }
+    );
+    console.log("uploaded succesfully", response.data);
+    // Handle success (e.g., show success message)
+  
+  } catch (error) {
+    console.error("API error:", error);
+    // Handle error (e.g., show error message)
+
+    
+  }
+}
 
   return (
     <>
@@ -41,18 +88,19 @@ const DataUpload = ({ onNext, onBack, currentStep }) => {
           </div>
           <div className="datacontainer">
             <h5>Download the template</h5>
-            <button>Download</button>
+            <button onClick={handleDownload}>Download</button>
           </div>
           <div className="datacontainer">
             <h5>Upload the Edited Data File</h5>
-            <button onClick={handleUploadButtonClick}>Upload</button>
+            <button onClick={() => fileInputRef.current.click()}>Upload</button>
             <input
               type="file"
               accept=".xlsx,.csv"
               onChange={handleUpload}
               ref={fileInputRef}
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
             />
+                <button onClick={handleSubmit()}>Submit</button>
           </div>
         </div>
         <div className="button-container">
@@ -66,6 +114,7 @@ const DataUpload = ({ onNext, onBack, currentStep }) => {
           </button>
         </div>
       </div>
+  
     </>
   );
 };

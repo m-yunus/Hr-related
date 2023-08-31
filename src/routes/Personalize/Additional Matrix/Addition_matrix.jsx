@@ -3,7 +3,7 @@ import axios from "axios";
 import { BaseUrl } from "../../../ApiService/ApiService";
 import SuccessModal from "../../../components/Loginsuccess/SuccessModal";
 import Error from "../../../components/Error/Error";
-
+import "./additional.css"
 const Addition_matrix = () => {
   const [matrixValues, setMatrixValues] = useState({
     addition_matrix: false,
@@ -37,7 +37,7 @@ const Addition_matrix = () => {
     } catch (error) {
       console.log("Api error", error);
 
-      if (error.response.status === 401) {
+      if (error) {
         seterrorStatus(error.response.data.message);
         setIserror(true);
         setTimeout(() => {
@@ -83,7 +83,7 @@ const Addition_matrix = () => {
               <div className="underline-grey"></div>
             </div>
 
-            <div className="radio-button-group">
+            <div className="additional-matrix-radio">
               <input
                 type="radio"
                 name="addition_matrix"
@@ -102,7 +102,8 @@ const Addition_matrix = () => {
               No
             </div>
 
-            <ul className="Culture-inputbox-list">
+            <ul className="additional-matrix_ul">
+              <div className="matrix_name">
               <li>Matrix name</li>
               <li>
                 <input
@@ -113,6 +114,8 @@ const Addition_matrix = () => {
                   onChange={handleInputChange}
                 />
               </li>
+              </div>
+              <div className="Factor_One">
               <li>Factor one</li>
               <li>
                 <input
@@ -123,6 +126,8 @@ const Addition_matrix = () => {
                   onChange={handleInputChange}
                 />
               </li>
+              </div>
+             
               <li>Factor Two</li>
               <li>
                 <input

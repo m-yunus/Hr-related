@@ -113,7 +113,7 @@ const User_Creation = () => {
     };
 
     fetchData();
-  }, []);
+  }, [uservalues]);
 
   const handleDeleteUser = async (userId) => {
     const headers = {
