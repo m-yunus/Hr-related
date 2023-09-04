@@ -3,6 +3,7 @@ import "./performancebasedbonus.css";
 import TopNav from '../../../layout/TopNav/TopNav';
 import axios from 'axios';
 import { BaseUrl } from '../../../ApiService/ApiService';
+import { useDataContext } from '../../../Context/Context';
 
 const Performancebasedbonus = ({ onNext, onBack, currentStep, setPerformanceBased, performanceBased }) => {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ const Performancebasedbonus = ({ onNext, onBack, currentStep, setPerformanceBase
     pro_rate_bonus: false,
     pro_rate_bonus_unit: ""
   });
-
+  const {setProgressvalue}=useDataContext()
   const handleInputChange = (field, value) => {
     setFormData((prevData) => ({
       ...prevData,
@@ -32,7 +33,7 @@ const Performancebasedbonus = ({ onNext, onBack, currentStep, setPerformanceBase
 
   const handleContinue = async () => {
     onNext();
-
+    setProgressvalue(prevdata=>prevdata+1);
     setPerformanceBased((prevdata) => ({
       ...prevdata,
       name: formData.name,

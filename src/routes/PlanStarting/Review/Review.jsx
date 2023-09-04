@@ -2,10 +2,13 @@ import { FaDownload } from "react-icons/fa"
 import TopNav from "../../../layout/TopNav/TopNav"
 import { AiFillMessage } from "react-icons/ai"
 import "./Review.css"
+import { useDataContext } from "../../../Context/Context"
 
 const Review = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
+  const {setProgressvalue}=useDataContext()
   const handleContinue = () => {
     // Move to the next step
+    setProgressvalue(prevdata=>prevdata+1);
     onNext();
   }
   return (

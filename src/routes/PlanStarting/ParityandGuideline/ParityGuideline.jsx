@@ -2,12 +2,13 @@ import  { useState } from "react";
 
 import "./parityguideline.css";
 import TopNav from "../../../layout/TopNav/TopNav";
+import { useDataContext } from "../../../Context/Context";
 
 const ParityGuideline = ({ onNext, onBack, currentStep,setPlandataValues }) => {
   const [preferredParityUnit, setPreferredParityUnit] = useState("Compa-ratio");
   const [enableMeritGuidelines, setEnableMeritGuidelines] = useState(false);
   const [supervisorRecommendationValidation, setSupervisorRecommendationValidation] = useState("yes");
-
+  const {setProgressvalue}=useDataContext()
   const handleContinue = () => {
    
     setPlandataValues((prevdata)=>({
@@ -17,7 +18,7 @@ const ParityGuideline = ({ onNext, onBack, currentStep,setPlandataValues }) => {
       supervisor_validation:supervisorRecommendationValidation,
     }))
     // You can pass the parityGuidelineData to the parent component or perform necessary actions here
-
+    setProgressvalue(prevdata=>prevdata+1);
     onNext();
   };
 

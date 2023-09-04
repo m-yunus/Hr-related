@@ -1,8 +1,12 @@
 import { useState } from "react";
 import "./cycleEligibility.css";
 import TopNav from "../../../../../layout/TopNav/TopNav";
+import { useDataContext } from "../../../../../Context/Context";
 
 const CycleEligibility = ({ onNext, onBack, currentStep, setPlandataValues }) => {
+const {setProgressvalue}=useDataContext()
+
+
   const [cycleFrequency, setCycleFrequency] = useState("yearly");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -45,6 +49,7 @@ const CycleEligibility = ({ onNext, onBack, currentStep, setPlandataValues }) =>
       eligibility_type: eligibilityOption,
       eligibility_date: eligibilityDate,
     }));
+setProgressvalue(prevdata=>prevdata+1);
   };
 
   return (

@@ -3,6 +3,7 @@ import "./Timebase.css"
 import TopNav from '../../../layout/TopNav/TopNav';
 import axios from 'axios';
 import { BaseUrl } from '../../../ApiService/ApiService';
+import { useDataContext } from '../../../Context/Context';
 const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased,timeBased }) => {
   const [formData, setFormData] = useState({
     bonusProgram: '',
@@ -15,7 +16,7 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased,timeBased }) 
     prorateBonus: false,
     preferredProrateUnit: '',
   });
-
+  const {setProgressvalue}=useDataContext()
 
 
   const handleInputChange = (field, value) => {
@@ -27,6 +28,7 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased,timeBased }) 
 
   const handleContinue = async () => {
     // Move to the next step
+    setProgressvalue(prevdata=>prevdata+1);
     onNext();
     setTimeBased((prevdata)=>({
       ...prevdata,

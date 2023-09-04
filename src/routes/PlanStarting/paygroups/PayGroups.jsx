@@ -1,11 +1,12 @@
 import { useState } from "react";
 import "./paygroups.css";
 import TopNav from "../../../layout/TopNav/TopNav";
+import { useDataContext } from "../../../Context/Context";
 
 const PayGroups = ({ onNext, onBack, currentStep , setPlandataValues}) => {
   const [applyDifferentMeritRules, setApplyDifferentMeritRules] = useState(false);
   const [payGroupBasis, setPayGroupBasis] = useState("");
-
+  const {setProgressvalue}=useDataContext()
   const handleContinue = () => {
     setPlandataValues((prevdata)=>({
       ...prevdata,
@@ -13,7 +14,7 @@ const PayGroups = ({ onNext, onBack, currentStep , setPlandataValues}) => {
       paygroups_name:payGroupBasis,
     }))
     // You can pass the payGroupsData to the parent component or perform necessary actions here
-
+    setProgressvalue(prevdata=>prevdata+1);
     onNext();
   };
 

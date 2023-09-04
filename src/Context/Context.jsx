@@ -9,6 +9,8 @@ export function useDataContext() {
 }
 export const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
+  const [progresValue,setProgressvalue]=useState(0);
+  console.log(progresValue);
 const user=localStorage.getItem('userName');
 
   const getAllData = async () => {
@@ -27,10 +29,10 @@ const user=localStorage.getItem('userName');
   useEffect(()=>{
    getAllData()
 
-    },[])
+    },[data])
     console.log(data)
     return (
-      <DataContext.Provider  value={{data,user}}>
+      <DataContext.Provider  value={{data,user,setProgressvalue,progresValue}}>
         {children}
       </DataContext.Provider>
     );

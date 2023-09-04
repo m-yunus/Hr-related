@@ -3,13 +3,16 @@ import TopNav from "../../../layout/TopNav/TopNav";
 import "./DataUpload.css";
 import { BaseUrl } from "../../../ApiService/ApiService";
 import axios from "axios";
+import { useDataContext } from "../../../Context/Context";
 
 const DataUpload = ({ onNext, onBack, currentStep }) => {
   const fileInputRef = useRef(null);
   const [uploadedFile, setUploadedFile] = useState(null); // State to hold the uploaded file
-
+  const {setProgressvalue}=useDataContext()
   const handleContinue = () => {
+    setProgressvalue(prevdata=>prevdata+1);
     onNext();
+
   };
 
   const handleUpload = (event) => {

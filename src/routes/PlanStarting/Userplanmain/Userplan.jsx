@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 import Navbar from "../../../layout/Navbar";
 import "./userplanmain.css";
 import { FaPlayCircle, FaSun, FaUser } from "react-icons/fa";
 import Countdown from "react-countdown";
-import {
-  addDays,
-  differenceInDays,
-  differenceInHours,
-  differenceInMinutes,
-} from "date-fns";
 import { useDataContext } from "../../../Context/Context";
 import { MdSettings } from "react-icons/md";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import { useEffect, useState } from "react";
 
 const Userplan = () => {
-  const { data, user } = useDataContext();
+  const { data, user,progresValue } = useDataContext();
+
+  const [percentagevalue,setpercentagevalue]=useState(0);
 
   const createdDate = new Date(data?.tat_time);
   const expiryDate = new Date(createdDate);
@@ -40,6 +37,18 @@ const Userplan = () => {
   const month = dateObject.getMonth() + 1; // Months are 0-indexed, so add 1
   const day = dateObject.getDate();
   const formattedNewDate = `${day < 10 ? '0' : ''}${day}/${month < 10 ? '0' : ''}${month}/${year}`;
+const progressfun=()=>{
+  const progresspercent=((progresValue / 40) * 100)
+  setpercentagevalue(progresspercent)
+}
+
+
+useEffect(()=>{
+  progressfun()
+},[percentagevalue,progresValue])
+
+
+
   const renderer = ({ completed, days, hours, minutes, seconds }) => {
     if (completed) {
       return <p>Time s up!</p>;
@@ -55,8 +64,12 @@ const Userplan = () => {
     }
   };
 
-  const percentage = 45;
+ 
 
+
+useEffect(()=>{
+
+},[])
   return (
     <div>
       <Navbar />
@@ -98,8 +111,8 @@ const Userplan = () => {
           </div>
           <div style={{ width: "100%", padding: "4rem", display: "flex", alignItems: "center", height: "280px", justifyContent: "center" }}>
             <CircularProgressbar
-              value={percentage}
-              text={`${percentage}%`}
+              value={percentagevalue}
+              text={`${percentagevalue}%`}
               styles={buildStyles({
                 pathColor: `#3e98c7`,
                 textColor: '#f88',

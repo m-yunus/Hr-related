@@ -1,5 +1,6 @@
 import { useState } from "react";
 import TopNav from "../../../layout/TopNav/TopNav";
+import { useDataContext } from "../../../Context/Context";
 
 
 const SplitandMatrix = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
@@ -7,7 +8,7 @@ const SplitandMatrix = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
   const [splitRecommendationCalculation, setSplitRecommendationCalculation] = useState("Average");
   const [enableMatrixRecommendation, setEnableMatrixRecommendation] = useState(false);
   const [matrixRecommendationCalculation, setMatrixRecommendationCalculation] = useState("Highest");
-
+  const {setProgressvalue}=useDataContext();
   const handleContinue = () => {
     setPlandataValues((prevdata)=>({
       ...prevdata,
@@ -17,7 +18,7 @@ const SplitandMatrix = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
       calculation_matrix_recommendation:matrixRecommendationCalculation,
     }))
     // You can pass the splitAndMatrixData to the parent component or perform necessary actions here
-
+    setProgressvalue(prevdata=>prevdata+1);
     onNext();
   };
 

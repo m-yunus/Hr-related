@@ -4,6 +4,7 @@ import Logo from "../assets/images/logo/image-removebg-preview.png";
 import User from "../assets/images/images/portrait-smiling-blonde-woman.jpg"
 import "../assets/css/dashboard.css"
 import { useDataContext } from "../Context/Context";
+import { Link } from "react-router-dom";
 const Navbar = () => {
 
 const {user}=useDataContext();
@@ -16,7 +17,7 @@ const {user}=useDataContext();
       </div>
       <div className="navbar-right">
         <div className="navbar-user">
-          <FaHome className="navbar-icon"  style={{color:"white"}}/>
+         <Link to="/userplan" ><FaHome className="navbar-icon"  style={{color:"white"}}/></Link> 
           <img src={User} alt="Profile" className="profile-picture" />
           
           <span className="username">{user}</span>

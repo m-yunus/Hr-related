@@ -2,13 +2,14 @@ import  { useState } from "react";
 import "./componentcurrency.css";
 import { AiFillPlusSquare } from "react-icons/ai";
 import TopNav from "../../../layout/TopNav/TopNav";
+import { useDataContext } from "../../../Context/Context";
 
 const Component_Currency = ({ onNext, onBack, currentStep,setPlandataValues }) => {
   const [useSalaryComponents, setUseSalaryComponents] = useState(false);
   const [componentName, setComponentName] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [useGlobalCurrency, setUseGlobalCurrency] = useState(false);
-
+  const {setProgressvalue}=useDataContext();
 console.log(useSalaryComponents,useGlobalCurrency);
   const handleContinue = () => {
   
@@ -25,7 +26,8 @@ console.log(useSalaryComponents,useGlobalCurrency);
       },
       global_currency:useGlobalCurrency,
       global_currency_list:"",
-    }))
+    }));
+    setProgressvalue(prevdata=>prevdata+1);
   };
 console.log(useSalaryComponents,componentName,displayName,useGlobalCurrency);
   return (

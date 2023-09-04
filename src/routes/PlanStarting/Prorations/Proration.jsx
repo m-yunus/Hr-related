@@ -1,13 +1,14 @@
 import { useState } from "react";
 import "./Prorations.css";
 import TopNav from "../../../layout/TopNav/TopNav";
+import { useDataContext } from "../../../Context/Context";
 
 const Proration = ({ onNext, onBack, currentStep,setPlandataValues }) => {
   const [prorateIncrement, setProrateIncrement] = useState(false);
   const [prorateIncrementUnit, setProrateIncrementUnit] = useState("Hourly");
   const [prorateOffCycle, setProrateOffCycle] = useState(false);
   const [prorateOffCycleUnit, setProrateOffCycleUnit] = useState("Monthly");
-
+  const {setProgressvalue}=useDataContext();
   const handleContinue = () => {
  
     setPlandataValues((prevdata)=>({
@@ -19,7 +20,7 @@ const Proration = ({ onNext, onBack, currentStep,setPlandataValues }) => {
     }))
     
     // You can pass the prorationData to the parent component or perform necessary actions here
-
+    setProgressvalue(prevdata=>prevdata+1);
     onNext();
   };
 

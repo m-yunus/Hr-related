@@ -59,6 +59,7 @@ const User_Creation = () => {
         user_password: "",
         role: "HR",
         limit_access: true,
+        user_access_criteria:accessItems
       });
       setAccessItems([]);
       setAdditionalField("");
@@ -152,7 +153,19 @@ const User_Creation = () => {
       }
     }
   };
+  const handleEditUserDetails=(items)=>{
+setIsModalOpen(true);
+setuservalues((prevData) => ({
+  ...prevData,
+  user_name:items.user_name,
+  user_email:items.user_email,
+  role:items.role,
+  user_password:items.user_password,
+  limit_access:items.limit_access,
 
+
+}))
+  }
   console.log(gettedData);
 
   return (
@@ -193,8 +206,8 @@ const User_Creation = () => {
                   {item?.user_access_criteria?.map((items) => items?.option)}
                 </td>
                 <td>
-                  <span>
-                    <FaEdit />
+                  <span style={{cursor:"pointer"}} onClick={()=>handleEditUserDetails(item)}>
+                    <FaEdit  />
                   </span>
                   {""}
                   {""}

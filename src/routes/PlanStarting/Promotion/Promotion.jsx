@@ -1,17 +1,18 @@
 import  { useState } from "react";
 import "./promotion.css";
 import TopNav from "../../../layout/TopNav/TopNav";
+import { useDataContext } from "../../../Context/Context";
 
 const Promotion = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
   const [enablePromotionRecommendations, setEnablePromotionRecommendations] = useState(false);
-
+  const {setProgressvalue}=useDataContext()
   const handleContinue = () => {
   
     setPlandataValues((prevdata)=>({
       ...prevdata,
       enable_recommendation:enablePromotionRecommendations,
     }))
-
+    setProgressvalue(prevdata=>prevdata+1);
     // You can pass the promotionData to the parent component or perform necessary actions here
 
     onNext();

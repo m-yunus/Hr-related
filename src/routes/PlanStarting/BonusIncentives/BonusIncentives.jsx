@@ -3,12 +3,13 @@ import "./bonusincentives.css";
 import TopNav from "../../../layout/TopNav/TopNav";
 import axios from "axios";
 import { BaseUrl } from "../../../ApiService/ApiService";
+import { useDataContext } from "../../../Context/Context";
 
 const BonusIncentives = ({ onNext, onBack, currentStep , setPlandataValues,Data }) => {
   const [enableBonusIncentives, setEnableBonusIncentives] = useState("yes");
   const [useDifferentRules, setUseDifferentRules] = useState("no");
   const [bonusGroupBasis, setBonusGroupBasis] = useState("");
-
+  const {setProgressvalue}=useDataContext();
   const handleContinue =async () => {
     setPlandataValues((prevdata)=>({
       ...prevdata,
@@ -30,7 +31,7 @@ try {
   console.log("Api error",error);
 }
     // You can pass the bonusIncentivesData to the parent component or perform necessary actions here
-
+    setProgressvalue(prevdata=>prevdata+1);
     onNext();
   };
 
