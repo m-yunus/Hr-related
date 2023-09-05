@@ -6,14 +6,30 @@ import { FaPlayCircle, FaSun, FaUser } from "react-icons/fa";
 import Countdown from "react-countdown";
 import { useDataContext } from "../../../Context/Context";
 import { MdSettings } from "react-icons/md";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+
 import { useEffect, useState } from "react";
+
+import ReactApexChart from "react-apexcharts";
 
 const Userplan = () => {
   const { data, user,progresValue } = useDataContext();
 
   const [percentagevalue,setpercentagevalue]=useState(0);
-
+  const [series, setSeries] = useState([percentagevalue]); 
+  const [options] = useState({
+    chart: {
+      height: 350,
+      type: 'radialBar',
+    },
+    plotOptions: {
+      radialBar: {
+        hollow: {
+          size: '60%',
+        },
+      },
+    },
+    labels: ['Progress'],
+  });
   const createdDate = new Date(data?.tat_time);
   const expiryDate = new Date(createdDate);
   expiryDate.setDate(expiryDate.getDate() + data?.tat);
@@ -45,6 +61,7 @@ const progressfun=()=>{
 
 useEffect(()=>{
   progressfun()
+  setSeries([percentagevalue])
 },[percentagevalue,progresValue])
 
 
@@ -67,9 +84,7 @@ useEffect(()=>{
  
 
 
-useEffect(()=>{
 
-},[])
   return (
     <div>
       <Navbar />
@@ -109,7 +124,7 @@ useEffect(()=>{
               <Countdown date={Date.now() + timeLeft} renderer={renderer} />
             </div>
           </div>
-          <div style={{ width: "100%", padding: "4rem", display: "flex", alignItems: "center", height: "280px", justifyContent: "center" }}>
+          {/* <div style={{ width: "100%", padding: "4rem", display: "flex", alignItems: "center", height: "280px", justifyContent: "center" }}>
             <CircularProgressbar
               value={percentagevalue}
               text={`${percentagevalue}%`}
@@ -119,7 +134,10 @@ useEffect(()=>{
                 trailColor: '#d6d6d6',
               })}
             />
-          </div>
+          </div> */}
+           <div id="chart">
+      <ReactApexChart options={options} series={series} type="radialBar" height={350} />
+    </div>
         </div> : null}
       </div>
     </div>

@@ -12,7 +12,7 @@ const Promotion = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
       ...prevdata,
       enable_recommendation:enablePromotionRecommendations,
     }))
-    setProgressvalue(prevdata=>prevdata+1);
+
     // You can pass the promotionData to the parent component or perform necessary actions here
 
     onNext();

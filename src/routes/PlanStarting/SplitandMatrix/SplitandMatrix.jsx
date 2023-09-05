@@ -18,7 +18,7 @@ const SplitandMatrix = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
       calculation_matrix_recommendation:matrixRecommendationCalculation,
     }))
     // You can pass the splitAndMatrixData to the parent component or perform necessary actions here
-    setProgressvalue(prevdata=>prevdata+1);
+
     onNext();
   };
 

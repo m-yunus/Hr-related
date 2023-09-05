@@ -27,7 +27,7 @@ console.log(useSalaryComponents,useGlobalCurrency);
       global_currency:useGlobalCurrency,
       global_currency_list:"",
     }));
-    setProgressvalue(prevdata=>prevdata+1);
+  
   };
 console.log(useSalaryComponents,componentName,displayName,useGlobalCurrency);
   return (

@@ -33,7 +33,7 @@ const Performancebasedbonus = ({ onNext, onBack, currentStep, setPerformanceBase
 
   const handleContinue = async () => {
     onNext();
-    setProgressvalue(prevdata=>prevdata+1);
+  
     setPerformanceBased((prevdata) => ({
       ...prevdata,
       name: formData.name,

@@ -14,7 +14,7 @@ const PayGroups = ({ onNext, onBack, currentStep , setPlandataValues}) => {
       paygroups_name:payGroupBasis,
     }))
     // You can pass the payGroupsData to the parent component or perform necessary actions here
-    setProgressvalue(prevdata=>prevdata+1);
+  
     onNext();
   };
 

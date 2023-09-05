@@ -8,7 +8,7 @@ const Review = ({ onNext, onBack, currentStep ,setPlandataValues}) => {
   const {setProgressvalue}=useDataContext()
   const handleContinue = () => {
     // Move to the next step
-    setProgressvalue(prevdata=>prevdata+1);
+  
     onNext();
   }
   return (

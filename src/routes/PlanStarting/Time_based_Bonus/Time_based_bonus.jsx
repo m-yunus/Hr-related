@@ -16,7 +16,6 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased,timeBased }) 
     prorateBonus: false,
     preferredProrateUnit: '',
   });
-  const {setProgressvalue}=useDataContext()
 
 
   const handleInputChange = (field, value) => {
@@ -28,7 +27,7 @@ const TimeBasedBonus = ({ onNext, onBack, currentStep,setTimeBased,timeBased }) 
 
   const handleContinue = async () => {
     // Move to the next step
-    setProgressvalue(prevdata=>prevdata+1);
+   
     onNext();
     setTimeBased((prevdata)=>({
       ...prevdata,

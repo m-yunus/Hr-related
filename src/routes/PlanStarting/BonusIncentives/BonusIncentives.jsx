@@ -6,10 +6,11 @@ import { BaseUrl } from "../../../ApiService/ApiService";
 import { useDataContext } from "../../../Context/Context";
 
 const BonusIncentives = ({ onNext, onBack, currentStep , setPlandataValues,Data }) => {
+  const {setUpdatedProgress,PercentageUpdating}=useDataContext();
   const [enableBonusIncentives, setEnableBonusIncentives] = useState("yes");
   const [useDifferentRules, setUseDifferentRules] = useState("no");
   const [bonusGroupBasis, setBonusGroupBasis] = useState("");
-  const {setProgressvalue}=useDataContext();
+ 
   const handleContinue =async () => {
     setPlandataValues((prevdata)=>({
       ...prevdata,
@@ -27,11 +28,18 @@ try {
     { headers }
   );
   console.log("submited succesfully",res.data);
+  
 } catch (error) {
   console.log("Api error",error);
 }
+
+setUpdatedProgress((prevdata)=>({
+  ...prevdata,
+  percentage:prevdata.percentage+12
+}));
+PercentageUpdating();
     // You can pass the bonusIncentivesData to the parent component or perform necessary actions here
-    setProgressvalue(prevdata=>prevdata+1);
+ 
     onNext();
   };
 
